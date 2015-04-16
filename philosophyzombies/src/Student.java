@@ -11,37 +11,18 @@ import java.util.ArrayList;
 
 public class Student extends User{
 
-    public GameData gamedata;
-    public QuizData quizdata;
+    public ArrayList<Integer> gameData;
+    public ArrayList<Integer> quizData;
     
-    
-    public Student(String n, String e, int i, Type t, String p){
+    public Student(String n, String e, int i, Type t, String p, ArrayList<Integer> gdata, ArrayList<Integer> qdata){
         super.name = n;
         super.email = e;
         super.ID = i;
         super.type = type.STUDENT;
         super.password = p;
-    }
-    
-    public void storeQuizData(Integer i){
         
+        gameData = gdata;
+        quizData = qdata;
     }
     
-    public ArrayList<Integer> loadQuizData(){
-        return quizdata.GetCompletedQuestions();
-    }
-    
-    public void storeGameData(Integer i){
-        
-    }
-    
-    public ArrayList<Integer> loadGameData(){
-        return gamedata.GetCompletedLevels();
-    }
-
-
-
-
-
-
 }
