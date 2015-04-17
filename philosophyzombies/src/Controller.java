@@ -27,7 +27,7 @@ public class Controller extends JFrame implements MouseListener{
     JButton submitButton;
     JButton classButton;
     JButton exitButton;
-    
+    int counter = 0;
     int width;
     int height;
     
@@ -151,6 +151,7 @@ public class Controller extends JFrame implements MouseListener{
   
     
     private void renderGame(){
+        
                             frame.dispose();
                             final JFrame frame = new JFrame("Playing the Game!");
                             frame.setSize(width, height);
@@ -171,15 +172,68 @@ public class Controller extends JFrame implements MouseListener{
     }
     
     private void renderQuiz(){
+                        if(counter<DataManager.instance().quiz1.questions.size())
+                        {
                                 frame.dispose();
                                 final JFrame frame = new JFrame("Taking the Quiz!");
                                 frame.setSize(width, height);
                                 frame.setVisible(true);
                                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                                frame.setLayout(new FlowLayout());
-                                JLabel gameLabel = new JLabel("Quiz takin'");
+                                frame.setLayout(new GridLayout(10,1));
+                                
+                                Question q = DataManager.instance().quiz1.questions.get(counter);
+                                JLabel question = new JLabel(q.question);
+                                JButton a = new JButton(q.a);
+                                JButton b = new JButton(q.b);
+                                JButton c = new JButton(q.c);
+                                JButton d = new JButton(q.d);
+                                frame.add(question);
+                                frame.add(a);
+                                frame.add(b);
+                                frame.add(c);
+                                frame.add(d);
+                                a.addActionListener(
+                                new ActionListener(){
+                                    public void actionPerformed(ActionEvent e) 
+                                    {
+                                        DataManager.instance().students.get(2).quizData.add(0);
+                                        counter++;
+                                        renderQuiz();
+                                    }
+                                });
+                                
+                                b.addActionListener(
+                                new ActionListener(){
+                                    public void actionPerformed(ActionEvent e) 
+                                    {
+                                        DataManager.instance().students.get(2).quizData.add(1);
+                                        counter++;
+                                        renderQuiz();
+                                    }
+                                });
+                                
+                                c.addActionListener(
+                                new ActionListener(){
+                                    public void actionPerformed(ActionEvent e) 
+                                    {
+                                        DataManager.instance().students.get(2).quizData.add(2);
+                                        counter++;
+                                        renderQuiz();
+                                    }
+                                });
+                                
+                                d.addActionListener(
+                                new ActionListener(){
+                                    public void actionPerformed(ActionEvent e) 
+                                    {
+                                        DataManager.instance().students.get(2).quizData.add(3);
+                                        counter++;
+                                        renderQuiz();
+                                    }
+                                });
+                        }
                                 JButton submitButton = new JButton("Submit the Quiz!"); // and the quiz button???
-                                submitButton.setBounds(50, 30, 200, 25);
+                                //submitButton.setBounds(50, 30, 200, 25);
                                 frame.add(submitButton);
                                 submitButton.addActionListener(
                                 new ActionListener(){
@@ -199,7 +253,8 @@ public class Controller extends JFrame implements MouseListener{
                                     frame.setLayout(new FlowLayout());
                                     JLabel gameLabel = new JLabel("Score: A! Please close the window!"); // Text still not showing, look up text for buttons
                                     JButton exitButton = new JButton("Exit");
-                        exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
+                        //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
+                                    frame.add(gameLabel);
                         frame.add(exitButton);
                         exitButton.addActionListener(
                         new ActionListener(){
