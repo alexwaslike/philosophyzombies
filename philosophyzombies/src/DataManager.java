@@ -28,9 +28,11 @@ public class DataManager{
     // *SINGLETON* - only instance of DataManager private
     private static DataManager instance;
     
-    public ArrayList<Student> students;
-    public Professor professor;
+    private ArrayList<Student> students;
+    private Professor professor;
     public State state;
+    
+    public Quiz quiz1;
     
     // *SINGLETON* - constructor is private
     private DataManager(){
@@ -61,9 +63,23 @@ public class DataManager{
         oli.quizData.add(2);
         oli.quizData.add(3);
         
+        students.add(alexandra);
+        students.add(oli);
         
         // similarly hard-coding the prof
         professor = new Professor("Bob", "merp@merp.com", 10, "lolza");
+        
+        // creating a quiz for simulation purposes
+        Question q1 = new Question("What year is Alexandra's birthday?",
+                                    "1991", "1992", "1993", "1994", "1994");
+        Question q2 = new Question("What is Alexandra's favorite color?",
+                                    "blue", "red", "green", "white", "red");
+        ArrayList<Question> qs = new ArrayList<Question>();
+        qs.add(q1);
+        qs.add(q2);
+        quiz1 = new Quiz(qs);
+        
+        // setting inital state; always display title screen first
         state = state.TITLE;
     }
     
@@ -78,60 +94,39 @@ public class DataManager{
         return instance;
     }
     
-    /*
-     * DATA STORING (SAVING)/ LOADING METHODS
-     */
-    
-    // Stores data into a user's file
-    public void StoreData(User u, DataType type, ArrayList<Integer> data){
-        
-        // convert data to byte array
-        byte[] bray = new byte[data.size()];
-        for(int i=0; i<data.size(); i++)
-            bray[i] = data.get(i).byteValue();
-        
-        // file name = username.txt
-        Path p = Paths.get("./" + u.name + type + ".txt");
-        
-        // write data to user's file
-        // if file exists, appends to end of file
-           // otherwise, creates new file
-        try (OutputStream out = new BufferedOutputStream(
-            Files.newOutputStream(p, CREATE, APPEND))) {
-            out.write(bray, 0, bray.length);
-        } catch (IOException x) {
-            System.err.println(x);
-        }
-    }
-    
-    // Returns ALL data from a user's file
-    public ArrayList<Integer> LoadData(User u, DataType type){
-        
-        ArrayList<Integer> data = new ArrayList<Integer>();
-        
-        Path file = Paths.get("./" + u.name + type + ".txt");
-        try (InputStream in = Files.newInputStream(file);
-            BufferedReader reader =
-            new BufferedReader(new InputStreamReader(in))) {
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                Scanner s = new Scanner(line);
-                while(s.hasNextInt())
-                    data.add(s.nextInt());
-            }
-        } catch (IOException x) {
-            System.err.println(x);
-        }
-        
-        return data;
-    }
-    
     
     /*
      * DATA PROCESSING METHODS
      *
      *
      */
+    
+    
+    // Stores data to a user
+    public void StoreData(User u, DataType type, ArrayList<Integer> data){
+        
+        ArrayList<Integer> prevData;
+        if(type == DataType.GAME){
+            students.get(students.indexOf(u)).gameData.addAll(data);
+        }
+        else if(type == DataType.GAME){
+            students.get(students.indexOf(u)).quizData.addAll(data);
+        }
+    
+    }
+    
+    // Returns ALL data from a specific user
+    public ArrayList<Integer> LoadData(User u, DataType type){
+        
+        if(type == DataType.GAME){
+            return students.get(students.indexOf(u)).gameData;
+        }
+        else if(type == DataType.GAME){
+            return students.get(students.indexOf(u)).quizData;
+        }
+        
+        return null;
+    }
     
     // Returns a list of all the students
     public ArrayList<Student> getStudents(){
