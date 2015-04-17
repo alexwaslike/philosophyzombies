@@ -27,6 +27,8 @@ public class Controller extends JFrame implements MouseListener{
     JButton classButton;
     JButton exitButton;
     
+    int width;
+    int height;
     
     public Controller(){
         this(800, 600);
@@ -34,7 +36,8 @@ public class Controller extends JFrame implements MouseListener{
     
     public Controller(int w, int h){
         addMouseListener(this);
-
+        width = w;
+        height = h;
     }
 
     public void run(){
@@ -61,7 +64,7 @@ public class Controller extends JFrame implements MouseListener{
     
     private void renderTitle(){
         frame = new JFrame("Game Skeleton"); // text for the title of the dialog
-//      frame.setSize(w, h); // the fuck is this
+        frame.setSize(width, height); // the fuck is this
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // CLOSE PROGRAM WHEN YOU CLOSE THE DIALOG THIS IS IMPORTANT
         studentButton = new JButton("Student"); // button + name on button
         studentButton.setBounds(50,30,200,25); // size of button (w,h,x,y) i believe check the docs
@@ -89,7 +92,7 @@ public class Controller extends JFrame implements MouseListener{
                         // DO NOT RESTATE THE STATE IF IT WAS STATED PREVIOUSLY LIKE DAT^ or you'll have to click twice & that sucks
                         frame.dispose(); // if there is a previous button, start with dispose to remove last frame
                         final JFrame frame = new JFrame("Hello Student!");
-                        frame.setSize(300, 150);
+                        frame.setSize(width, height);
                         frame.setVisible(true);
                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         JButton playButton = new JButton("Play Game");
@@ -117,7 +120,7 @@ public class Controller extends JFrame implements MouseListener{
     private void renderProfessorMenu(){
                         frame.dispose();
                         final JFrame frame = new JFrame("Hello Professor!");
-                        frame.setSize(300, 150);
+                        frame.setSize(width, height);
                         frame.setVisible(true);
                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         JButton classButton = new JButton("Check Class Data");
@@ -145,7 +148,7 @@ public class Controller extends JFrame implements MouseListener{
     private void renderGame(){
                             frame.dispose();
                             final JFrame frame = new JFrame("Playing the Game!");
-                            frame.setSize(300, 150);
+                            frame.setSize(width, height);
                             frame.setVisible(true);
                             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                             JLabel gameLabel = new JLabel("Do the thing!");
@@ -164,7 +167,7 @@ public class Controller extends JFrame implements MouseListener{
     private void renderQuiz(){
                                 frame.dispose();
                                 final JFrame frame = new JFrame("Taking the Quiz!");
-                                frame.setSize(300, 150);
+                                frame.setSize(width, height);
                                 frame.setVisible(true);
                                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                 JLabel gameLabel = new JLabel("Quiz takin'");
@@ -183,7 +186,7 @@ public class Controller extends JFrame implements MouseListener{
     private void renderResults(){
                                     frame.dispose();
                                     final JFrame frame = new JFrame("Done the Quiz!");
-                                    frame.setSize(300, 150);
+                                    frame.setSize(width, height);
                                     frame.setVisible(true);
                                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                     JLabel gameLabel = new JLabel("Score: A! Please close the window!"); // Text still not showing, look up text for buttons
@@ -192,7 +195,7 @@ public class Controller extends JFrame implements MouseListener{
     private void renderData(){
                                     frame.dispose();
                                     final JFrame frame = new JFrame("Class Scores");
-                                    frame.setSize(300, 150);
+                                    frame.setSize(width, height);
                                     frame.setVisible(true);
                                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                     JLabel gameLabel = new JLabel("Scores and stuff!");
