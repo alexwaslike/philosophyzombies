@@ -15,11 +15,12 @@ public class Viewer {
         Controller frame = new Controller();
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-        while (true) {
+        if (true) {
         	frame.run();
         	frame.render();
         	Thread.sleep(20); //20
         }
+        
     }
     
     
