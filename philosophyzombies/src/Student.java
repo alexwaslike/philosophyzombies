@@ -14,7 +14,15 @@ public class Student extends User{
     public ArrayList<Integer> gameData;
     public ArrayList<Integer> quizData;
     
-    public Student(String n, String e, int i, Type t, String p, ArrayList<Integer> gdata, ArrayList<Integer> qdata){
+    public Student(String n, String e, int i, String p){
+        super.name = n;
+        super.email = e;
+        super.ID = i;
+        super.type = type.STUDENT;
+        super.password = p;
+    }
+    
+    public Student(String n, String e, int i, String p, ArrayList<Integer> gdata, ArrayList<Integer> qdata){
         super.name = n;
         super.email = e;
         super.ID = i;

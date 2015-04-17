@@ -34,8 +34,36 @@ public class DataManager{
     
     // *SINGLETON* - constructor is private
     private DataManager(){
+        
         students = new ArrayList<Student>();
-        professor = new Professor();
+        // search in directory for all students and pull their data
+        // we're going to hard-code in some students for the purposes of
+        // simulation; we don't actually have a database to pull from
+        // and searching for all of the save files 
+        // is outside the scope of this project
+        Student alexandra = new Student("Alexandra", "asdf", 1, "lol");
+        alexandra.gameData = new ArrayList<Integer>();
+        alexandra.gameData.add(1);
+        alexandra.gameData.add(2);
+        alexandra.gameData.add(3);
+        alexandra.quizData = new ArrayList<Integer>();
+        alexandra.quizData.add(1);
+        alexandra.quizData.add(2);
+        alexandra.quizData.add(3);
+        
+        Student oli = new Student("Oli", "asdfff", 2, "lol");
+        oli.gameData = new ArrayList<Integer>();
+        oli.gameData.add(1);
+        oli.gameData.add(2);
+        oli.gameData.add(3);
+        oli.quizData = new ArrayList<Integer>();
+        oli.quizData.add(1);
+        oli.quizData.add(2);
+        oli.quizData.add(3);
+        
+        
+        // similarly hard-coding the prof
+        professor = new Professor("Bob", "merp@merp.com", 10, "lolza");
         state = state.TITLE;
     }
     
@@ -55,7 +83,7 @@ public class DataManager{
      */
     
     // Stores data into a user's file
-    public void StoreData(User u, ArrayList<Integer> data){
+    public void StoreData(User u, DataType type, ArrayList<Integer> data){
         
         // convert data to byte array
         byte[] bray = new byte[data.size()];
@@ -63,7 +91,7 @@ public class DataManager{
             bray[i] = data.get(i).byteValue();
         
         // file name = username.txt
-        Path p = Paths.get("./" + u.name + ".txt");
+        Path p = Paths.get("./" + u.name + type + ".txt");
         
         // write data to user's file
         // if file exists, appends to end of file
@@ -77,11 +105,11 @@ public class DataManager{
     }
     
     // Returns ALL data from a user's file
-    public ArrayList<Integer> LoadData(User u){
+    public ArrayList<Integer> LoadData(User u, DataType type){
         
         ArrayList<Integer> data = new ArrayList<Integer>();
         
-        Path file = Paths.get("./" + u.name + ".txt");
+        Path file = Paths.get("./" + u.name + type + ".txt");
         try (InputStream in = Files.newInputStream(file);
             BufferedReader reader =
             new BufferedReader(new InputStreamReader(in))) {

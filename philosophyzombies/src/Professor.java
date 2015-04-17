@@ -8,15 +8,7 @@
 
 public class Professor extends User{
 
-    public Professor(){
-        super.name = "empty";
-        super.email = "empty";
-        super.ID = -1;
-        super.type = type.PROFESSOR;
-        super.password = "empty";
-    }
-    
-    public Professor(String n, String e, int i, Type t, String p){
+    public Professor(String n, String e, int i, String p){
         super.name = n;
         super.email = e;
         super.ID = i;
