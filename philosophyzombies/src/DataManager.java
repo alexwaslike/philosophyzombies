@@ -44,23 +44,23 @@ public class DataManager{
         // and searching for all of the save files 
         // is outside the scope of this project
         Student alexandra = new Student("Alexandra", "asdf", 1, "lol");
-        alexandra.gameData = new ArrayList<Integer>();
         alexandra.gameData.add(3);
         alexandra.gameData.add(1);
-        alexandra.quizData = new ArrayList<Integer>();
         alexandra.quizData.add(3);
         alexandra.quizData.add(1);
         
         Student oli = new Student("Oli", "asdfff", 2, "lol");
-        oli.gameData = new ArrayList<Integer>();
         oli.gameData.add(1);
         oli.gameData.add(2);
-        oli.quizData = new ArrayList<Integer>();
         oli.quizData.add(3);
         oli.quizData.add(2);
         
+        Student pete = new Student("Pete", "asdfsadf", 3, "lolo");
+        
+        
         students.add(alexandra);
         students.add(oli);
+        students.add(pete);
         
         // similarly hard-coding the prof
         professor = new Professor("Bob", "merp@merp.com", 10, "lolza");

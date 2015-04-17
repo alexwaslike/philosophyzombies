@@ -20,6 +20,9 @@ public class Student extends User{
         super.ID = i;
         super.type = type.STUDENT;
         super.password = p;
+        
+        gameData = new ArrayList<Integer>();
+        quizData = new ArrayList<Integer>();
     }
     
     public Student(String n, String e, int i, String p, ArrayList<Integer> gdata, ArrayList<Integer> qdata){
@@ -35,6 +38,10 @@ public class Student extends User{
     
     public int getGrade(Quiz quiz){
         
+        if(quizData.isEmpty()){
+            return 0;
+        }
+
         int numQuestions = quiz.correctAnswers.size();
         int numCorrect = 0;
         for( int i=0; i<quizData.size(); i++ ){
@@ -45,6 +52,7 @@ public class Student extends User{
         return (numCorrect/numQuestions)*100;
         
     }
+    
     
     
     
