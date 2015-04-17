@@ -221,13 +221,14 @@ public class Controller extends JFrame implements MouseListener{
                                         labels.add( new JLabel("Student: " + s.name + 
                                                          "        Grade: " + s.getGrade(DataManager.instance().quiz1)) );
                                     }
+                                   JLabel gameLabel3 = new JLabel("Average: "+DataManager.instance().getAverageGrade());
                                    
                                     JButton exitButton = new JButton("Exit");
                                     //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
                                     for( JLabel gameLabel : labels ){
                                         frame.add(gameLabel);
                                     }
-                                    
+                                    frame.add(gameLabel3);
                                     frame.add(exitButton);
                                     exitButton.addActionListener(
                                             new ActionListener(){
