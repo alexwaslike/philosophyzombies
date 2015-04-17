@@ -33,8 +33,17 @@ public class Student extends User{
         quizData = qdata;
     }
     
-    public int getGrade(){
-        return 0;
+    public int getGrade(Quiz quiz){
+        
+        int numQuestions = quiz.correctAnswers.size();
+        int numCorrect = 0;
+        for( int i=0; i<quizData.size(); i++ ){
+            if( quiz.correctAnswers.get(i) == quizData.get(i) )
+                numCorrect++;
+        }
+        
+        return (numCorrect/numQuestions)*100;
+        
     }
     
     

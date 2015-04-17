@@ -45,23 +45,19 @@ public class DataManager{
         // is outside the scope of this project
         Student alexandra = new Student("Alexandra", "asdf", 1, "lol");
         alexandra.gameData = new ArrayList<Integer>();
-        alexandra.gameData.add(1);
-        alexandra.gameData.add(2);
         alexandra.gameData.add(3);
+        alexandra.gameData.add(1);
         alexandra.quizData = new ArrayList<Integer>();
-        alexandra.quizData.add(1);
-        alexandra.quizData.add(2);
         alexandra.quizData.add(3);
+        alexandra.quizData.add(1);
         
         Student oli = new Student("Oli", "asdfff", 2, "lol");
         oli.gameData = new ArrayList<Integer>();
         oli.gameData.add(1);
         oli.gameData.add(2);
-        oli.gameData.add(3);
         oli.quizData = new ArrayList<Integer>();
-        oli.quizData.add(1);
-        oli.quizData.add(2);
         oli.quizData.add(3);
+        oli.quizData.add(2);
         
         students.add(alexandra);
         students.add(oli);
@@ -107,7 +103,16 @@ public class DataManager{
         return students;
     }
     
-    public double getAverageGrade(){ return 0.0; }
+    public double getAverageGrade(){
+        int numStudents = students.size();
+        int gradeSum = 0;
+        
+        for( Student s : students ){
+            gradeSum += s.getGrade(quiz1);
+        }
+        
+        return gradeSum/numStudents;
+    }
 
     public double getGradeBySection(int sectionNum){ return 0.0; }
 
