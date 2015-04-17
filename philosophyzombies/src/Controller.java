@@ -7,10 +7,10 @@
  */
 
 import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
+import javax.swing.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
@@ -66,9 +66,14 @@ public class Controller extends JFrame implements MouseListener{
         frame = new JFrame("Game Skeleton"); // text for the title of the dialog
         frame.setSize(width, height); // the fuck is this
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // CLOSE PROGRAM WHEN YOU CLOSE THE DIALOG THIS IS IMPORTANT
+        frame.setLayout(new FlowLayout());
         studentButton = new JButton("Student"); // button + name on button
-        studentButton.setBounds(50,30,200,25); // size of button (w,h,x,y) i believe check the docs
+        studentButton.setBounds(10,0,50,30); // size of button (x,y,w,h) i believe check the docs
 	frame.add(studentButton); // do this to add ANYTHING to a box
+        
+        professorButton = new JButton("Professor");
+        professorButton.setBounds(200,100,50,60);
+	frame.add(professorButton);
         studentButton.addActionListener( // add dat listener
                 new ActionListener(){ // create dat listener
                     public void actionPerformed(ActionEvent e) { // default click function
@@ -76,9 +81,6 @@ public class Controller extends JFrame implements MouseListener{
                         renderStudentMenu(); // render the state from this^
                     }
                 });
-        professorButton = new JButton("Professor");
-        professorButton.setBounds(50,60,200,25);
-	frame.add(professorButton);
         professorButton.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e) {
@@ -95,6 +97,7 @@ public class Controller extends JFrame implements MouseListener{
                         frame.setSize(width, height);
                         frame.setVisible(true);
                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        frame.setLayout(new FlowLayout());
                         JButton playButton = new JButton("Play Game");
                         playButton.setBounds(50, 30, 200, 25);
                         frame.add(playButton);
@@ -123,6 +126,7 @@ public class Controller extends JFrame implements MouseListener{
                         frame.setSize(width, height);
                         frame.setVisible(true);
                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        frame.setLayout(new FlowLayout());
                         JButton classButton = new JButton("Check Class Data");
                         classButton.setBounds(50, 30, 200, 25);
                         frame.add(classButton);
@@ -151,6 +155,7 @@ public class Controller extends JFrame implements MouseListener{
                             frame.setSize(width, height);
                             frame.setVisible(true);
                             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                            frame.setLayout(new FlowLayout());
                             JLabel gameLabel = new JLabel("Do the thing!");
                             JButton quizButton = new JButton("Take the quiz!"); // and the quiz button???
                             quizButton.setBounds(50, 30, 200, 25);
@@ -170,6 +175,7 @@ public class Controller extends JFrame implements MouseListener{
                                 frame.setSize(width, height);
                                 frame.setVisible(true);
                                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                frame.setLayout(new FlowLayout());
                                 JLabel gameLabel = new JLabel("Quiz takin'");
                                 JButton submitButton = new JButton("Submit the Quiz!"); // and the quiz button???
                                 submitButton.setBounds(50, 30, 200, 25);
@@ -189,7 +195,17 @@ public class Controller extends JFrame implements MouseListener{
                                     frame.setSize(width, height);
                                     frame.setVisible(true);
                                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                    frame.setLayout(new FlowLayout());
                                     JLabel gameLabel = new JLabel("Score: A! Please close the window!"); // Text still not showing, look up text for buttons
+                                    JButton exitButton = new JButton("Exit");
+                        exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
+                        frame.add(exitButton);
+                        exitButton.addActionListener(
+                        new ActionListener(){
+                            public void actionPerformed(ActionEvent e) {
+                                System.exit(0);
+                            }
+                        });
     }
     
     private void renderData(){
@@ -198,9 +214,19 @@ public class Controller extends JFrame implements MouseListener{
                                     frame.setSize(width, height);
                                     frame.setVisible(true);
                                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                                    JLabel gameLabel = new JLabel("Scores and stuff!");
+                                    frame.setLayout(new GridLayout(4,1));
+                                    JLabel gameLabel = new JLabel("Student: Alex     Grade: 0");
+                                    JLabel gameLabel2 = new JLabel("Student: Oli     Grade: 0");
+                                    JLabel gameLabel3 = new JLabel("Average: 85");
+                                   
                                     JButton exitButton = new JButton("Exit");
-                                    exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
+                                    //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
+                                    frame.add(gameLabel, SwingConstants.CENTER);
+                                   
+                                    frame.add(gameLabel2);
+                                    
+                                    frame.add(gameLabel3);
+                                    
                                     frame.add(exitButton);
                                     exitButton.addActionListener(
                                             new ActionListener(){
