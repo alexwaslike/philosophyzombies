@@ -16,18 +16,11 @@ public class Viewer {
         Controller frame = new Controller();
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
         if (true) {
-        	frame.run();
+        	frame.run(); // can we run/visible this at a default large size because currently it's teeny tiny
         	frame.render();
         	Thread.sleep(20); //20
-                currentState = DataManager.instance().state;
-        }
-        if(currentState != DataManager.instance().state)
-        {
-                    frame.run();
-                    frame.render();
-                    Thread.sleep(20); //20
-        }
-        
+                currentState = DataManager.instance().state; // just in case
+        }      
     }
     
     

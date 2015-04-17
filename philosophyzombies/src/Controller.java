@@ -60,17 +60,17 @@ public class Controller extends JFrame implements MouseListener{
     }
     
     private void renderTitle(){
-        frame = new JFrame("Game Skeleton");
-//      frame.setSize(w, h);
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        studentButton = new JButton("Student");
-        studentButton.setBounds(50,30,200,25);
-	frame.add(studentButton);
-        studentButton.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e) {
-                        DataManager.instance().state = State.STUDENTMENU; // You have to press student twice for it to work, but it works
-                        renderStudentMenu();
+        frame = new JFrame("Game Skeleton"); // text for the title of the dialog
+//      frame.setSize(w, h); // the fuck is this
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // CLOSE PROGRAM WHEN YOU CLOSE THE DIALOG THIS IS IMPORTANT
+        studentButton = new JButton("Student"); // button + name on button
+        studentButton.setBounds(50,30,200,25); // size of button (w,h,x,y) i believe check the docs
+	frame.add(studentButton); // do this to add ANYTHING to a box
+        studentButton.addActionListener( // add dat listener
+                new ActionListener(){ // create dat listener
+                    public void actionPerformed(ActionEvent e) { // default click function
+                        DataManager.instance().state = State.STUDENTMENU; // DECLARE THE STATE FIRST THING HERE
+                        renderStudentMenu(); // render the state from this^
                     }
                 });
         professorButton = new JButton("Professor");
@@ -86,7 +86,8 @@ public class Controller extends JFrame implements MouseListener{
     }
     
     private void renderStudentMenu(){
-                        frame.dispose();
+                        // DO NOT RESTATE THE STATE IF IT WAS STATED PREVIOUSLY LIKE DAT^ or you'll have to click twice & that sucks
+                        frame.dispose(); // if there is a previous button, start with dispose to remove last frame
                         final JFrame frame = new JFrame("Hello Student!");
                         frame.setSize(300, 150);
                         frame.setVisible(true);
@@ -101,13 +102,13 @@ public class Controller extends JFrame implements MouseListener{
                                 renderGame();
                             }
                         });
-                        JButton exitButton = new JButton("Exit");
+                        JButton exitButton = new JButton("Exit"); // any time you have an exit button, USE THIS FORMULA DOWN HERE
                         exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
                         frame.add(exitButton);
                         exitButton.addActionListener( // this works, press once
                         new ActionListener(){
                             public void actionPerformed(ActionEvent e) {
-                                System.exit(0);
+                                System.exit(0); // quits the program, closes the window, flees into the night, d for done, etc.
                             }
                         });
         
