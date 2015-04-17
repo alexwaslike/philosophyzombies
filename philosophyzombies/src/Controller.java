@@ -232,6 +232,13 @@ public class Controller extends JFrame implements MouseListener{
                                     }
                                 });
                         }
+                        else{
+                                frame.dispose();
+                                final JFrame frame = new JFrame("Taking the Quiz!");
+                                frame.setSize(width, height);
+                                frame.setVisible(true);
+                                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                frame.setLayout(new GridLayout(10,1));
                                 JButton submitButton = new JButton("Submit the Quiz!"); // and the quiz button???
                                 //submitButton.setBounds(50, 30, 200, 25);
                                 frame.add(submitButton);
@@ -242,6 +249,7 @@ public class Controller extends JFrame implements MouseListener{
                                         renderResults();
                                     }
                                 });
+                        }
     }
     
     private void renderResults(){
@@ -251,7 +259,7 @@ public class Controller extends JFrame implements MouseListener{
                                     frame.setVisible(true);
                                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                     frame.setLayout(new FlowLayout());
-                                    JLabel gameLabel = new JLabel("Score: A! Please close the window!"); // Text still not showing, look up text for buttons
+                                    JLabel gameLabel = new JLabel("Score: " +DataManager.instance().students.get(2).getGrade(DataManager.instance().quiz1) +" Please close the window!"); // Text still not showing, look up text for buttons
                                     JButton exitButton = new JButton("Exit");
                         //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
                                     frame.add(gameLabel);
