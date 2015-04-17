@@ -1,3 +1,6 @@
+
+import javax.swing.JFrame;
+
 /**
  * Authors: Alexandra Willis, Alex Herbert, Sarah Baldwin, Kristen Barrett
  * File: 
@@ -8,11 +11,15 @@
 
 public class Viewer {
 
-    private GameController gameFrame;
-    private QuizController quizFrame;
-    
-    public static void main(String[] args){
-        
+    public static void main(String[] args) throws InterruptedException{
+        Controller frame = new Controller();
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+        while (true) {
+        	frame.run();
+        	frame.render();
+        	Thread.sleep(20); //20
+        }
     }
     
     

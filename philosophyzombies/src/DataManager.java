@@ -30,11 +30,13 @@ public class DataManager{
     
     public ArrayList<Student> students;
     public Professor professor;
+    public State state;
     
     // *SINGLETON* - constructor is private
     private DataManager(){
         students = new ArrayList<Student>();
         professor = new Professor();
+        state = state.TITLE;
     }
     
     // *SINGLETON* - only way for other classes to access the DataManager
@@ -42,7 +44,7 @@ public class DataManager{
     //                  it checks to see if the insance already exists
     //                  before creating a new one;
     //                  either way, it returns instance
-    public DataManager instance(){
+    public static DataManager instance(){
         if(instance == null)
             instance = new DataManager();
         return instance;
