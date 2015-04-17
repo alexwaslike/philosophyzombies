@@ -33,4 +33,10 @@ public class Student extends User{
         quizData = qdata;
     }
     
+    public int getGrade(){
+        return 0;
+    }
+    
+    
+    
 }

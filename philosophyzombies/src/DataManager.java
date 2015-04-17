@@ -28,8 +28,8 @@ public class DataManager{
     // *SINGLETON* - only instance of DataManager private
     private static DataManager instance;
     
-    private ArrayList<Student> students;
-    private Professor professor;
+    public ArrayList<Student> students;
+    public Professor professor;
     public State state;
     
     public Quiz quiz1;
@@ -71,9 +71,9 @@ public class DataManager{
         
         // creating a quiz for simulation purposes
         Question q1 = new Question("What year is Alexandra's birthday?",
-                                    "1991", "1992", "1993", "1994", "1994");
+                                    "1991", "1992", "1993", "1994", 3);
         Question q2 = new Question("What is Alexandra's favorite color?",
-                                    "blue", "red", "green", "white", "red");
+                                    "blue", "red", "green", "white", 1);
         ArrayList<Question> qs = new ArrayList<Question>();
         qs.add(q1);
         qs.add(q2);
@@ -101,32 +101,6 @@ public class DataManager{
      *
      */
     
-    
-    // Stores data to a user
-    public void StoreData(User u, DataType type, ArrayList<Integer> data){
-        
-        ArrayList<Integer> prevData;
-        if(type == DataType.GAME){
-            students.get(students.indexOf(u)).gameData.addAll(data);
-        }
-        else if(type == DataType.GAME){
-            students.get(students.indexOf(u)).quizData.addAll(data);
-        }
-    
-    }
-    
-    // Returns ALL data from a specific user
-    public ArrayList<Integer> LoadData(User u, DataType type){
-        
-        if(type == DataType.GAME){
-            return students.get(students.indexOf(u)).gameData;
-        }
-        else if(type == DataType.GAME){
-            return students.get(students.indexOf(u)).quizData;
-        }
-        
-        return null;
-    }
     
     // Returns a list of all the students
     public ArrayList<Student> getStudents(){

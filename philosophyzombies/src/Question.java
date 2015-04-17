@@ -19,9 +19,9 @@ public class Question{
     // 1 = b
     // 2 = c
     // 3 = d
-    String correctAnswer;
+    int correctAnswer;
     
-    public Question(String q, String a, String b, String c, String d, String ca){
+    public Question(String q, String a, String b, String c, String d, int ca){
         question = q;
         this.a = a;
         this.b = b;
