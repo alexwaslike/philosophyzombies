@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -215,17 +216,17 @@ public class Controller extends JFrame implements MouseListener{
                                     frame.setVisible(true);
                                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                     frame.setLayout(new GridLayout(4,1));
-                                    JLabel gameLabel = new JLabel("Student: Alex     Grade: 0");
-                                    JLabel gameLabel2 = new JLabel("Student: Oli     Grade: 0");
-                                    JLabel gameLabel3 = new JLabel("Average: 85");
+                                    ArrayList<JLabel> labels = new ArrayList<JLabel>();
+                                    for(Student s: DataManager.instance().students){
+                                        labels.add( new JLabel("Student: " + s.name + 
+                                                         "        Grade: " + s.getGrade(DataManager.instance().quiz1)) );
+                                    }
                                    
                                     JButton exitButton = new JButton("Exit");
                                     //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
-                                    frame.add(gameLabel, SwingConstants.CENTER);
-                                   
-                                    frame.add(gameLabel2);
-                                    
-                                    frame.add(gameLabel3);
+                                    for( JLabel gameLabel : labels ){
+                                        frame.add(gameLabel);
+                                    }
                                     
                                     frame.add(exitButton);
                                     exitButton.addActionListener(
