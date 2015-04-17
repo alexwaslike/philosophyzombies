@@ -1,7 +1,7 @@
 /**
  * Authors: Alexandra Willis, Alex Herbert, Sarah Baldwin, Kristen Barrett
- * File: 
- * Purpose:
+ * File: Professor.java
+ * Purpose: Contains information for the Professor. (Model)
  * Course: CSC 3380
  * Instructor: Supratik
  */

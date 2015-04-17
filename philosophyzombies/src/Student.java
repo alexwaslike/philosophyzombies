@@ -1,13 +1,13 @@
-
-import java.util.ArrayList;
-
 /**
  * Authors: Alexandra Willis, Alex Herbert, Sarah Baldwin, Kristen Barrett
- * File: 
- * Purpose:
+ * File: Student.java
+ * Purpose: When instantiated, Student stores information for a studen user.
+ *             (Model)
  * Course: CSC 3380
  * Instructor: Supratik
  */
+
+import java.util.ArrayList;
 
 public class Student extends User{
 

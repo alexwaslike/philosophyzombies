@@ -1,7 +1,8 @@
 /**
  * Authors: Alexandra Willis, Alex Herbert, Sarah Baldwin, Kristen Barrett
- * File: 
- * Purpose:
+ * File: User.java
+ * Purpose: Superclass to store common information for Professor and Student.
+ *          Will be useful for future loggin in functionality.
  * Course: CSC 3380
  * Instructor: Supratik
  */

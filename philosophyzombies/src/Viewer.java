@@ -3,8 +3,9 @@ import javax.swing.JFrame;
 
 /**
  * Authors: Alexandra Willis, Alex Herbert, Sarah Baldwin, Kristen Barrett
- * File: 
- * Purpose:
+ * File: Viewer.java
+ * Purpose: The VIEWER part of the MVC. Displays the results of the render()
+ *          methods in Controller on screen.
  * Course: CSC 3380
  * Instructor: Supratik
  */

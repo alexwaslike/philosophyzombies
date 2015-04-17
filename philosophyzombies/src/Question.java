@@ -1,8 +1,8 @@
 /**
  * Authors: Alexandra Willis, Alex Herbert, Sarah Baldwin, Kristen Barrett
  * File: Quiz.java
- * Purpose: When instantiated, a Quiz stores all of the questions and correct
- *          answers for a quiz.
+ * Purpose: When instantiated, a Question stores the information for 
+ *           questions to be stored in a quiz. (Model)
  * Course: CSC 3380
  * Instructor: Supratik
  */

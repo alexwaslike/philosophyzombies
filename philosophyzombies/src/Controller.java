@@ -1,7 +1,9 @@
 /**
  * Authors: Alexandra Willis, Alex Herbert, Sarah Baldwin, Kristen Barrett
- * File: 
- * Purpose:
+ * File: Controller.java
+ * Purpose: Controller contains both CONTROLLER and VIEW parts of the MVC.
+ *          Run() CONTROLS which screen to display and the render() methods
+ *          display the VIEW on screen.
  * Course: CSC 3380
  * Instructor: Supratik
  */
