@@ -2,8 +2,10 @@ public enum State{
        TITLE,
        STUDENTMENU,
        PROFESSORMENU,
-       GAME,
-       QUIZ,
+       SITUATION,
+       OPTIONS,
+       DECISION,
        RESULTS,
+       QUIZ,
        CLASSDATA
 }

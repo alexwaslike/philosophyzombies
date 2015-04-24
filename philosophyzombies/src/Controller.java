@@ -29,6 +29,7 @@ public class Controller extends JFrame implements MouseListener{
     JButton submitButton;
     JButton classButton;
     JButton exitButton;
+    int decision=0;
     int counter = 0;
     int width;
     int height;
@@ -51,8 +52,10 @@ public class Controller extends JFrame implements MouseListener{
             renderStudentMenu();
         else if(st == State.PROFESSORMENU)
             renderProfessorMenu();
-        else if(st == State.GAME)
-            renderGame();
+        else if(st == State.SITUATION)
+            renderSituation();
+        else if(st == State.OPTIONS)
+            renderOptions();
         else if(st == State.QUIZ)
             renderQuiz();
         else if(st == State.RESULTS)
@@ -66,6 +69,7 @@ public class Controller extends JFrame implements MouseListener{
     }
     
     private void renderTitle(){
+        
         frame = new JFrame("Game Skeleton"); // text for the title of the dialog
         frame.setSize(500, 500); // the fuck is this
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // CLOSE PROGRAM WHEN YOU CLOSE THE DIALOG THIS IS IMPORTANT
@@ -98,6 +102,44 @@ public class Controller extends JFrame implements MouseListener{
                 });
     }
     
+    private void renderInGameTitle(){
+        frame.dispose();
+        final JFrame frame = new JFrame("Main Menu");
+        frame.setSize(width, height);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // CLOSE PROGRAM WHEN YOU CLOSE THE DIALOG THIS IS IMPORTANT
+        frame.setLayout(new FlowLayout());
+        studentButton = new JButton("Student"); // button + name on button
+        //studentButton.setBounds(10,0,50,30); // size of button (x,y,w,h) i believe check the docs
+	frame.add(studentButton); // do this to add ANYTHING to a box
+        
+        professorButton = new JButton("Professor");
+        //professorButton.setBounds(200,100,50,60);
+        exitButton = new JButton("Exit Program");
+	frame.add(professorButton);
+        frame.add(exitButton);
+        studentButton.addActionListener( // add dat listener
+                new ActionListener(){ // create dat listener
+                    public void actionPerformed(ActionEvent e) { // default click function
+                        DataManager.instance().state = State.STUDENTMENU; // DECLARE THE STATE FIRST THING HERE
+                        renderStudentMenu(); // render the state from this^
+                    }
+                });
+        professorButton.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e) {
+                        DataManager.instance().state = State.PROFESSORMENU;
+                        renderProfessorMenu();
+                    }
+                });
+        exitButton.addActionListener( // this works, press once
+                        new ActionListener(){
+                            public void actionPerformed(ActionEvent e) {
+                                System.exit(0); // quits the program, closes the window, flees into the night, d for done, etc.
+                            }
+                        });
+    }
+    
     private void renderStudentMenu(){
                         // DO NOT RESTATE THE STATE IF IT WAS STATED PREVIOUSLY LIKE DAT^ or you'll have to click twice & that sucks
                         frame.dispose(); // if there is a previous button, start with dispose to remove last frame
@@ -116,20 +158,25 @@ public class Controller extends JFrame implements MouseListener{
                         playButton.addActionListener(
                         new ActionListener(){
                             public void actionPerformed(ActionEvent e) {
-                                DataManager.instance().state = State.GAME;
-                                renderGame();
+                                DataManager.instance().state = State.SITUATION;
+                                renderSituation();
                             }
                         });
+<<<<<<< HEAD
                         JButton exitButton = new JButton("Exit"); // any time you have an exit button, USE THIS FORMULA DOWN HERE
                         exitButton.setBounds(200,100,50,60); // Why is the exit button so large???
+=======
+                        JButton exitButton = new JButton("Exit to Main Menu"); // any time you have an exit button, USE THIS FORMULA DOWN HERE
+                        //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
+>>>>>>> origin/master
                         frame.add(exitButton);
-                        exitButton.addActionListener( // this works, press once
+                        exitButton.addActionListener(
                         new ActionListener(){
                             public void actionPerformed(ActionEvent e) {
-                                System.exit(0); // quits the program, closes the window, flees into the night, d for done, etc.
+                                DataManager.instance().state = State.TITLE;
+                                renderInGameTitle();
                             }
-                        });
-        
+                        });  
     }
     
     private void renderProfessorMenu(){
@@ -153,21 +200,23 @@ public class Controller extends JFrame implements MouseListener{
                                 renderData();
                             }
                         });
-                        JButton exitButton = new JButton("Exit");
-                        exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
+                        JButton exitButton = new JButton("Exit to Main Menu");
+                        //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
                         frame.add(exitButton);
                         exitButton.addActionListener(
                         new ActionListener(){
                             public void actionPerformed(ActionEvent e) {
-                                System.exit(0);
+                                DataManager.instance().state = State.TITLE;
+                                renderInGameTitle();
                             }
                         });
     }
   
     
-    private void renderGame(){
+    private void renderSituation(){
         
                             frame.dispose();
+<<<<<<< HEAD
                             final JFrame frame = new JFrame("Playing the Game!");
                             frame.setSize(500,500);
                             frame.setVisible(true);
@@ -179,10 +228,95 @@ public class Controller extends JFrame implements MouseListener{
                             label.setBounds(250,340,250,250);
                             JButton quizButton = new JButton("Take the quiz!"); // and the quiz button???
                             quizButton.setBounds(50, 30, 200, 25);
+=======
+                            final JFrame frame = new JFrame("The Situation");
+                            frame.setSize(width, height);
+                            frame.setVisible(true);
+                            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                             frame.setLayout(new GridLayout(10,1));
+                            JLabel situationLine1 = new JLabel("You are witnessing a runaway train barrelling down railway tracks towards five people who are tied up and unable to escape.");
+                            JLabel situationLine2 = new JLabel("However, you could flip a switch on the track, sending the train towards one person instead of the five.");    
+                            frame.add(situationLine1);  
+                            frame.add(situationLine2);
+                            JButton optionsButton = new JButton("Make a decision!!"); // and the quiz button???
+                            //quizButton.setBounds(50, 30, 200, 25);
+                            frame.add(optionsButton);
+                            optionsButton.addActionListener(
+                            new ActionListener(){
+                                public void actionPerformed(ActionEvent e) {
+                                    
+                                    DataManager.instance().state = State.OPTIONS;
+                                    renderOptions();
+                                }
+                            });
+    }
+    
+    private void renderOptions(){
+        
+                            frame.dispose();
+                            final JFrame frame = new JFrame("Make your choice!!");
+                            frame.setSize(width, height);
+                            frame.setVisible(true);
+                            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                             frame.setLayout(new GridLayout(10,1));
+                                JLabel question = new JLabel("Do you flip the switch, killing only one person; or let the train go, and kill five?");
+                                JButton a = new JButton("Flip the switch!");
+                                JButton b = new JButton("I can't do it!!");
+                                frame.add(question);
+                                frame.add(a);
+                                frame.add(b);
+                                a.addActionListener(
+                                new ActionListener(){
+                                    public void actionPerformed(ActionEvent e) 
+                                    {
+                                        DataManager.instance().state = State.DECISION;
+                                        decision=0;
+                                        renderDecision();
+                                    }
+                                });
+                                
+                                b.addActionListener(
+                                new ActionListener(){
+                                    public void actionPerformed(ActionEvent e) 
+                                    {
+                                        DataManager.instance().state = State.DECISION;
+                                        decision=1;
+                                        renderDecision();
+                                    }
+                                });
+                            
+                                
+                            
+    }
+    
+    private void renderDecision(){
+        
+                            frame.dispose();
+                            final JFrame frame = new JFrame("You have made your decision!");
+                            frame.setSize(width, height);
+                            frame.setVisible(true);
+                            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                             frame.setLayout(new GridLayout(10,1));
+                             if(decision==0)
+                             {
+                                JLabel decisionLine1 = new JLabel("You chose the utilitarian choice: you chose to maximize the utility, meaning you chose the choice that minimized suffering.");
+                                frame.add(decisionLine1);
+                             }
+                             else if (decision==1)
+                             {
+                                JLabel decisionLine1 = new JLabel("You chose not to interfere with the scenario, probably because you believed that sending the train towards somebody was immoral.");
+                                JLabel decisionLine2 = new JLabel("You chose the non-utilitarian choice. Utilitarianism is the belief that moral actions maximize utility, meaning, minimize suffering.");
+                                frame.add(decisionLine1);
+                                frame.add(decisionLine2);
+                             }
+                            
+                            JButton quizButton = new JButton("Take the quiz");    
+>>>>>>> origin/master
                             frame.add(quizButton);
                             quizButton.addActionListener(
                             new ActionListener(){
                                 public void actionPerformed(ActionEvent e) {
+                                    
                                     DataManager.instance().state = State.QUIZ;
                                     renderQuiz();
                                 }
@@ -271,7 +405,7 @@ public class Controller extends JFrame implements MouseListener{
                                 });
                         }
     }
-    
+    //Need to have something to account for different number of questions
     private void renderResults(){
                                     frame.dispose();
                                     final JFrame frame = new JFrame("Done the Quiz!");
@@ -280,14 +414,16 @@ public class Controller extends JFrame implements MouseListener{
                                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                     frame.setLayout(new FlowLayout());
                                     JLabel gameLabel = new JLabel("Score: " +DataManager.instance().students.get(2).getGrade(DataManager.instance().quiz1) +" Please close the window!"); // Text still not showing, look up text for buttons
-                                    JButton exitButton = new JButton("Exit");
+                                    JButton exitButton = new JButton("Exit to Main Menu");
                         //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
                                     frame.add(gameLabel);
                         frame.add(exitButton);
                         exitButton.addActionListener(
                         new ActionListener(){
                             public void actionPerformed(ActionEvent e) {
-                                System.exit(0);
+                                
+                                DataManager.instance().state = State.TITLE;
+                                    renderInGameTitle();
                             }
                         });
     }
@@ -306,7 +442,7 @@ public class Controller extends JFrame implements MouseListener{
                                     }
                                    JLabel gameLabel3 = new JLabel("Average: "+DataManager.instance().getAverageGrade());
                                    
-                                    JButton exitButton = new JButton("Exit");
+                                    JButton exitButton = new JButton("Exit to Main Menu");
                                     //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
                                     for( JLabel gameLabel : labels ){
                                         frame.add(gameLabel);
@@ -316,8 +452,12 @@ public class Controller extends JFrame implements MouseListener{
                                     exitButton.addActionListener(
                                             new ActionListener(){
                                                 public void actionPerformed(ActionEvent e){
-                                                    System.exit(0);
-                                                }}); 
+                                                    DataManager.instance().state = State.TITLE;
+                                                    renderInGameTitle();
+                                                }
+                                            }
+                                    ); 
+                                   
     }
     
     public void mousePressed(MouseEvent e){}
