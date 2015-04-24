@@ -173,6 +173,7 @@ public class Controller extends JFrame implements MouseListener{
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        /* STUDENT SELCETION BUTTONS */
         frame.setLayout(new GridLayout(10,1));
             JButton a = new JButton(DataManager.instance().students.get(0).name);
             JButton b = new JButton(DataManager.instance().students.get(1).name);
