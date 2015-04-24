@@ -67,13 +67,18 @@ public class Controller extends JFrame implements MouseListener{
     
     private void renderTitle(){
         frame = new JFrame("Game Skeleton"); // text for the title of the dialog
-        frame.setSize(width, height); // the fuck is this
+        frame.setSize(500, 500); // the fuck is this
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // CLOSE PROGRAM WHEN YOU CLOSE THE DIALOG THIS IS IMPORTANT
         frame.setLayout(new FlowLayout());
+        JLabel label = new JLabel();
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/startimg.gif")));
+        frame.add(label);
+        label.setSize(250,340);
+        frame.getContentPane().add(label);
+        label.setVisible(true);
         studentButton = new JButton("Student"); // button + name on button
         studentButton.setBounds(10,0,50,30); // size of button (x,y,w,h) i believe check the docs
 	frame.add(studentButton); // do this to add ANYTHING to a box
-        
         professorButton = new JButton("Professor");
         professorButton.setBounds(200,100,50,60);
 	frame.add(professorButton);
@@ -97,12 +102,16 @@ public class Controller extends JFrame implements MouseListener{
                         // DO NOT RESTATE THE STATE IF IT WAS STATED PREVIOUSLY LIKE DAT^ or you'll have to click twice & that sucks
                         frame.dispose(); // if there is a previous button, start with dispose to remove last frame
                         final JFrame frame = new JFrame("Hello Student!");
-                        frame.setSize(width, height);
+                        frame.setSize(500,500);
                         frame.setVisible(true);
                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         frame.setLayout(new FlowLayout());
+                        JLabel label = new JLabel();
+                        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/studentimg.gif")));
+                        frame.add(label);
+                        label.setBounds(250,340,10,10);
                         JButton playButton = new JButton("Play Game");
-                        playButton.setBounds(50, 30, 200, 25);
+                        playButton.setBounds(10,0,50,30);
                         frame.add(playButton);
                         playButton.addActionListener(
                         new ActionListener(){
@@ -112,7 +121,7 @@ public class Controller extends JFrame implements MouseListener{
                             }
                         });
                         JButton exitButton = new JButton("Exit"); // any time you have an exit button, USE THIS FORMULA DOWN HERE
-                        exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
+                        exitButton.setBounds(200,100,50,60); // Why is the exit button so large???
                         frame.add(exitButton);
                         exitButton.addActionListener( // this works, press once
                         new ActionListener(){
@@ -126,10 +135,14 @@ public class Controller extends JFrame implements MouseListener{
     private void renderProfessorMenu(){
                         frame.dispose();
                         final JFrame frame = new JFrame("Hello Professor!");
-                        frame.setSize(width, height);
+                        frame.setSize(500,500);
                         frame.setVisible(true);
                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         frame.setLayout(new FlowLayout());
+                        JLabel label = new JLabel();
+                        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/professorgif.gif")));
+                        frame.add(label);
+                        label.setBounds(250,340,10,10);
                         JButton classButton = new JButton("Check Class Data");
                         classButton.setBounds(50, 30, 200, 25);
                         frame.add(classButton);
@@ -156,11 +169,14 @@ public class Controller extends JFrame implements MouseListener{
         
                             frame.dispose();
                             final JFrame frame = new JFrame("Playing the Game!");
-                            frame.setSize(width, height);
+                            frame.setSize(500,500);
                             frame.setVisible(true);
                             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                             frame.setLayout(new FlowLayout());
-                            JLabel gameLabel = new JLabel("Do the thing!");
+                            JLabel label = new JLabel();
+                            label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameimg.gif")));
+                            frame.add(label);
+                            label.setBounds(250,340,250,250);
                             JButton quizButton = new JButton("Take the quiz!"); // and the quiz button???
                             quizButton.setBounds(50, 30, 200, 25);
                             frame.add(quizButton);
@@ -178,11 +194,13 @@ public class Controller extends JFrame implements MouseListener{
                         {
                                 frame.dispose();
                                 final JFrame frame = new JFrame("Taking the Quiz!");
-                                frame.setSize(width, height);
+                                frame.setSize(500,500);
                                 frame.setVisible(true);
                                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                JLabel label = new JLabel();
+                                label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/quizimg.gif")));
+                                frame.add(label);
                                 frame.setLayout(new GridLayout(10,1));
-                                
                                 Question q = DataManager.instance().quiz1.questions.get(counter);
                                 JLabel question = new JLabel(q.question);
                                 JButton a = new JButton(q.a);
