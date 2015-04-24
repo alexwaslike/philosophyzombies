@@ -70,6 +70,7 @@ public class Controller extends JFrame implements MouseListener{
     
     private void renderTitle(){
         
+        /* FRAME SETTINGS */
         frame = new JFrame("Game Skeleton"); // text for the title of the dialog
         frame.setSize(500, 500); // the fuck is this
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // CLOSE PROGRAM WHEN YOU CLOSE THE DIALOG THIS IS IMPORTANT
@@ -80,12 +81,18 @@ public class Controller extends JFrame implements MouseListener{
         label.setSize(250,340);
         frame.getContentPane().add(label);
         label.setVisible(true);
+        
+        /* STUDENT BUTTON */
         studentButton = new JButton("Student"); // button + name on button
         studentButton.setBounds(10,0,50,30); // size of button (x,y,w,h) i believe check the docs
 	frame.add(studentButton); // do this to add ANYTHING to a box
+        
+        /* PROF BUTTON */
         professorButton = new JButton("Professor");
         professorButton.setBounds(200,100,50,60);
 	frame.add(professorButton);
+        
+        /* CLICK FUNCTIONS */
         studentButton.addActionListener( // add dat listener
                 new ActionListener(){ // create dat listener
                     public void actionPerformed(ActionEvent e) { // default click function
@@ -103,25 +110,34 @@ public class Controller extends JFrame implements MouseListener{
     }
     
     private void renderInGameTitle(){
+        
+        /* FRAME SETTINGS */
         frame.dispose();
         final JFrame frame = new JFrame("Main Menu");
         frame.setSize(500,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // CLOSE PROGRAM WHEN YOU CLOSE THE DIALOG THIS IS IMPORTANT
         frame.setLayout(new FlowLayout());
+        
+        /* TITLE IMAGE */
         JLabel label = new JLabel();
         label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/startimg.gif")));
         frame.add(label);
         label.setSize(250,340);
+        
+        /* STUDENT BUTTON */
         studentButton = new JButton("Student"); // button + name on button
         //studentButton.setBounds(10,0,50,30); // size of button (x,y,w,h) i believe check the docs
 	frame.add(studentButton); // do this to add ANYTHING to a box
         
+        /* PROFESSOR BUTTON */
         professorButton = new JButton("Professor");
         //professorButton.setBounds(200,100,50,60);
         exitButton = new JButton("Exit Program");
 	frame.add(professorButton);
         frame.add(exitButton);
+        
+        /* CLICK FUNCTIONS */
         studentButton.addActionListener( // add dat listener
                 new ActionListener(){ // create dat listener
                     public void actionPerformed(ActionEvent e) { // default click function
@@ -147,327 +163,362 @@ public class Controller extends JFrame implements MouseListener{
     }
     
     private void renderStudentMenu(){
-                        // DO NOT RESTATE THE STATE IF IT WAS STATED PREVIOUSLY LIKE DAT^ or you'll have to click twice & that sucks
-                        frame.dispose(); // if there is a previous button, start with dispose to remove last frame
-                        final JFrame frame = new JFrame("Hello Student!");
-                        frame.setSize(500,500);
-                        frame.setVisible(true);
-                        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        frame.setLayout(new FlowLayout());
-                        JLabel label = new JLabel();
-                        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/studentimg.gif")));
-                        frame.add(label);
-                        label.setBounds(250,340,10,10);
-                        JButton playButton = new JButton("Play Game");
-                        playButton.setBounds(10,0,50,30);
-                        frame.add(playButton);
-                        playButton.addActionListener(
-                        new ActionListener(){
-                            public void actionPerformed(ActionEvent e) {
-                                frame.dispose();
-                                DataManager.instance().state = State.SITUATION;
-                                renderSituation();
-                            }
-                        });
-                        JButton exitButton = new JButton("Exit"); // any time you have an exit button, USE THIS FORMULA DOWN HERE
-                        exitButton.setBounds(200,100,50,60); // Why is the exit button so large???
-                        JButton exittoMainMenuButton = new JButton("Exit to Main Menu"); // any time you have an exit button, USE THIS FORMULA DOWN HERE
-                        //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
-                        frame.add(exittoMainMenuButton);
-                        exittoMainMenuButton.addActionListener(
-                        new ActionListener(){
-                            public void actionPerformed(ActionEvent e) {
-                                frame.dispose();
-                                DataManager.instance().state = State.TITLE;
-                                renderInGameTitle();
-                            }
-                        });  
+        /* FRAME SETTINGS */
+        // DO NOT RESTATE THE STATE IF IT WAS STATED PREVIOUSLY LIKE DAT^ or you'll have to click twice & that sucks
+        frame.dispose(); // if there is a previous button, start with dispose to remove last frame
+        final JFrame frame = new JFrame("Hello Student!");
+        frame.setSize(500,500);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new FlowLayout());
+        
+        /* IMAGE */
+        JLabel label = new JLabel();
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/studentimg.gif")));
+        frame.add(label);
+        label.setBounds(250,340,10,10);
+        
+        /* PLAY GAME BUTTON */
+        JButton playButton = new JButton("Play Game");
+        playButton.setBounds(10,0,50,30);
+        frame.add(playButton);
+        playButton.addActionListener(
+        new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                DataManager.instance().state = State.SITUATION;
+                renderSituation();
+            }
+        });
+        
+        /* EXIT BUTTON */
+        JButton exitButton = new JButton("Exit"); // any time you have an exit button, USE THIS FORMULA DOWN HERE
+        exitButton.setBounds(200,100,50,60); // Why is the exit button so large???
+        
+        /* EXIT TO MAIN MENU BUTTON */
+        JButton exittoMainMenuButton = new JButton("Exit to Main Menu"); // any time you have an exit button, USE THIS FORMULA DOWN HERE
+        //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
+        frame.add(exittoMainMenuButton);
+        exittoMainMenuButton.addActionListener(
+        new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                DataManager.instance().state = State.TITLE;
+                renderInGameTitle();
+            }
+        });  
     }
     
     private void renderProfessorMenu(){
-                        frame.dispose();
-                        final JFrame frame = new JFrame("Hello Professor!");
-                        frame.setSize(500,500);
-                        frame.setVisible(true);
-                        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        frame.setLayout(new FlowLayout());
-                        JLabel label = new JLabel();
-                        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/professorgif.gif")));
-                        frame.add(label);
-                        label.setBounds(250,340,10,10);
-                        JButton classButton = new JButton("Check Class Data");
-                        classButton.setBounds(50, 30, 200, 25);
-                        frame.add(classButton);
-                        classButton.addActionListener(
-                        new ActionListener(){
-                            public void actionPerformed(ActionEvent e) {
-                                frame.dispose();
-                                DataManager.instance().state = State.CLASSDATA;
-                                renderData();
-                            }
-                        });
-                        JButton exitButton = new JButton("Exit to Main Menu");
-                        //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
-                        frame.add(exitButton);
-                        exitButton.addActionListener(
-                        new ActionListener(){
-                            public void actionPerformed(ActionEvent e) {
-                                frame.dispose();
-                                DataManager.instance().state = State.TITLE;
-                                renderInGameTitle();
-                            }
-                        });
+        /* FRAME SETTINGS */
+        frame.dispose();
+        final JFrame frame = new JFrame("Hello Professor!");
+        frame.setSize(500,500);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new FlowLayout());
+        
+        /* IMAGE */
+        JLabel label = new JLabel();
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/professorgif.gif")));
+        frame.add(label);
+        label.setBounds(250,340,10,10);
+        
+        /* CHECK CLASS DATA BUTTON */
+        JButton classButton = new JButton("Check Class Data");
+        classButton.setBounds(50, 30, 200, 25);
+        frame.add(classButton);
+        classButton.addActionListener(
+        new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                DataManager.instance().state = State.CLASSDATA;
+                renderData();
+            }
+        });
+        
+        /* EXIT TO MAIN MENU BUTTON */
+        JButton exitButton = new JButton("Exit to Main Menu");
+        //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
+        frame.add(exitButton);
+        exitButton.addActionListener(
+        new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                DataManager.instance().state = State.TITLE;
+                renderInGameTitle();
+            }
+        });
     }
   
     
     private void renderSituation(){
-                            frame.dispose();
-//                            final JFrame frame = new JFrame("Playing the Game!");
-//                            frame.setSize(500,500);
-//                            frame.setVisible(true);
-//                            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//                            frame.setLayout(new FlowLayout());
-//                            JLabel label = new JLabel();
-//                            label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameimg.gif")));
-//                            frame.add(label);
-//                            label.setBounds(250,340,250,250);
-//                            JButton quizButton = new JButton("Take the quiz!"); // and the quiz button???
-//                            quizButton.setBounds(50, 30, 200, 25);
-                            final JFrame Situationframe = new JFrame("The Situation");
-                            Situationframe.setSize(500, 500);
-                            Situationframe.setVisible(true);
-                            Situationframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                             Situationframe.setLayout(new GridLayout(10,1));
-                            JLabel situationLine1 = new JLabel("You are witnessing a runaway train barrelling down railway tracks towards five people who are tied up and unable to escape.");
-                            JLabel situationLine2 = new JLabel("However, you could flip a switch on the track, sending the train towards one person instead of the five.");    
-                            Situationframe.add(situationLine1);  
-                            Situationframe.add(situationLine2);
-                            JButton optionsButton = new JButton("Make a decision!!"); // and the quiz button???
-                            //quizButton.setBounds(50, 30, 200, 25);
-                            Situationframe.add(optionsButton);
-                            optionsButton.addActionListener(
-                            new ActionListener(){
-                                public void actionPerformed(ActionEvent e) {
-                                    Situationframe.dispose();
-                                    DataManager.instance().state = State.OPTIONS;
-                                    renderOptions();
-                                }
-                            });
+        
+        /* FRAME SETTINGS */
+        frame.dispose();
+        final JFrame Situationframe = new JFrame("The Situation");
+        Situationframe.setSize(500, 500);
+        Situationframe.setVisible(true);
+        Situationframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Situationframe.setLayout(new GridLayout(10,1));
+         
+        /* TEXT */
+        JLabel situationLine1 = new JLabel("You are witnessing a runaway train barrelling down railway tracks towards five people who are tied up and unable to escape.");
+        JLabel situationLine2 = new JLabel("However, you could flip a switch on the track, sending the train towards one person instead of the five.");    
+        Situationframe.add(situationLine1);  
+        Situationframe.add(situationLine2);
+        
+        /* DECISION BUTTON */
+        JButton optionsButton = new JButton("Make a decision!!"); // and the quiz button???
+        //quizButton.setBounds(50, 30, 200, 25);
+        Situationframe.add(optionsButton);
+        optionsButton.addActionListener(
+        new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                Situationframe.dispose();
+                DataManager.instance().state = State.OPTIONS;
+                renderOptions();
+            }
+        });
     }
     
     private void renderOptions(){
         
-                            frame.dispose();
-                            final JFrame frame = new JFrame("Make your choice!!");
-                            frame.setSize(500,500);
-                            frame.setVisible(true);
-                            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                             frame.setLayout(new GridLayout(10,1));
-                                JLabel question = new JLabel("Do you flip the switch, killing only one person; or let the train go, and kill five?");
-                                JButton a = new JButton("Flip the switch!");
-                                JButton b = new JButton("I can't do it!!");
-                                frame.add(question);
-                                frame.add(a);
-                                frame.add(b);
-                                a.addActionListener(
-                                new ActionListener(){
-                                    public void actionPerformed(ActionEvent e) 
-                                    {
-                                        frame.dispose();
-                                        DataManager.instance().state = State.DECISION;
-                                        decision=0;
-                                        renderDecision();
-                                    }
-                                });
-                                
-                                b.addActionListener(
-                                new ActionListener(){
-                                    public void actionPerformed(ActionEvent e) 
-                                    {
-                                        frame.dispose();
-                                        DataManager.instance().state = State.DECISION;
-                                        decision=1;
-                                        renderDecision();
-                                    }
-                                });
-                            
-                                
-                            
+        /* FRAME SETTINGS */
+        frame.dispose();
+        final JFrame frame = new JFrame("Make your choice!!");
+        frame.setSize(500,500);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new GridLayout(10,1));
+        
+        /* QUESTION AND ANSWERS */
+        JLabel question = new JLabel("Do you flip the switch, killing only one person; or let the train go, and kill five?");
+        JButton a = new JButton("Flip the switch!");
+        JButton b = new JButton("I can't do it!!");
+        frame.add(question);
+        frame.add(a);
+        frame.add(b);
+        a.addActionListener(
+        new ActionListener(){
+            public void actionPerformed(ActionEvent e) 
+            {
+                frame.dispose();
+                DataManager.instance().state = State.DECISION;
+                decision=0;
+                renderDecision();
+            }
+        });
+        b.addActionListener(
+        new ActionListener(){
+            public void actionPerformed(ActionEvent e) 
+            {
+                frame.dispose();
+                DataManager.instance().state = State.DECISION;
+                decision=1;
+                renderDecision();
+            }
+        });
     }
     
     private void renderDecision(){
+        /* FRAME SETTINGS */
+        frame.dispose();
+        final JFrame frame = new JFrame("You have made your decision!");
+        frame.setSize(500,500);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new GridLayout(10,1));
         
-                            frame.dispose();
-                            final JFrame frame = new JFrame("You have made your decision!");
-                            frame.setSize(500,500);
-                            frame.setVisible(true);
-                            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                             frame.setLayout(new GridLayout(10,1));
-                             if(decision==0)
-                             {
-                                JLabel decisionLine1 = new JLabel("You chose the utilitarian choice: you chose to maximize the utility, meaning you chose the choice that minimized suffering.");
-                                frame.add(decisionLine1);
-                             }
-                             else if (decision==1)
-                             {
-                                JLabel decisionLine1 = new JLabel("You chose not to interfere with the scenario, probably because you believed that sending the train towards somebody was immoral.");
-                                JLabel decisionLine2 = new JLabel("You chose the non-utilitarian choice. Utilitarianism is the belief that moral actions maximize utility, meaning, minimize suffering.");
-                                frame.add(decisionLine1);
-                                frame.add(decisionLine2);
-                             }
-                            
-                            JButton quizButton = new JButton("Take the quiz");    
-                            frame.add(quizButton);
-                            quizButton.addActionListener(
-                            new ActionListener(){
-                                public void actionPerformed(ActionEvent e) {
-                                    frame.dispose();
-                                    DataManager.instance().state = State.QUIZ;
-                                    renderQuiz();
-                                }
-                            });
+        /* CHECK FOR PREVIOUS SCENARIO DECISION */
+        if(decision==0)
+        {
+           JLabel decisionLine1 = new JLabel("You chose the utilitarian choice: you chose to maximize the utility, meaning you chose the choice that minimized suffering.");
+           frame.add(decisionLine1);
+        }
+        else if (decision==1)
+        {
+           JLabel decisionLine1 = new JLabel("You chose not to interfere with the scenario, probably because you believed that sending the train towards somebody was immoral.");
+           JLabel decisionLine2 = new JLabel("You chose the non-utilitarian choice. Utilitarianism is the belief that moral actions maximize utility, meaning, minimize suffering.");
+           frame.add(decisionLine1);
+           frame.add(decisionLine2);
+        }
+        
+        /* QUIZ BUTTON */
+        JButton quizButton = new JButton("Take the quiz");    
+        frame.add(quizButton);
+        quizButton.addActionListener(
+        new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                DataManager.instance().state = State.QUIZ;
+                renderQuiz();
+            }
+        });
     }
     
     private void renderQuiz(){
-                        if(counter<DataManager.instance().quiz1.questions.size())
-                        {
-                                frame.dispose();
-                                final JFrame frame = new JFrame("Taking the Quiz!");
-                                frame.setSize(500,500);
-                                frame.setVisible(true);
-                                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                                JLabel label = new JLabel();
-                                label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/quizimg.gif")));
-                                frame.add(label);
-                                frame.setLayout(new GridLayout(10,1));
-                                Question q = DataManager.instance().quiz1.questions.get(counter);
-                                JLabel question = new JLabel(q.question);
-                                JButton a = new JButton(q.a);
-                                JButton b = new JButton(q.b);
-                                JButton c = new JButton(q.c);
-                                JButton d = new JButton(q.d);
-                                frame.add(question);
-                                frame.add(a);
-                                frame.add(b);
-                                frame.add(c);
-                                frame.add(d);
-                                a.addActionListener(
-                                new ActionListener(){
-                                    public void actionPerformed(ActionEvent e) 
-                                    {
-                                        frame.dispose();
-                                        DataManager.instance().students.get(2).quizData.add(0);
-                                        counter++;
-                                        renderQuiz();
-                                    }
-                                });
-                                
-                                b.addActionListener(
-                                new ActionListener(){
-                                    public void actionPerformed(ActionEvent e) 
-                                    {
-                                        frame.dispose();
-                                        DataManager.instance().students.get(2).quizData.add(1);
-                                        counter++;
-                                        renderQuiz();
-                                    }
-                                });
-                                
-                                c.addActionListener(
-                                new ActionListener(){
-                                    public void actionPerformed(ActionEvent e) 
-                                    {
-                                        frame.dispose();
-                                        DataManager.instance().students.get(2).quizData.add(2);
-                                        counter++;
-                                        renderQuiz();
-                                    }
-                                });
-                                
-                                d.addActionListener(
-                                new ActionListener(){
-                                    public void actionPerformed(ActionEvent e) 
-                                    {
-                                        frame.dispose();
-                                        DataManager.instance().students.get(2).quizData.add(3);
-                                        counter++;
-                                        renderQuiz();
-                                    }
-                                });
-                        }
-                        else{
-                                frame.dispose();
-                                final JFrame frame = new JFrame("Taking the Quiz!");
-                                frame.setSize(500,500);
-                                frame.setVisible(true);
-                                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                                frame.setLayout(new GridLayout(10,1));
-                                JButton submitButton = new JButton("Submit the Quiz!"); // and the quiz button???
-                                //submitButton.setBounds(50, 30, 200, 25);
-                                frame.add(submitButton);
-                                submitButton.addActionListener(
-                                new ActionListener(){
-                                    public void actionPerformed(ActionEvent e) {
-                                        frame.dispose();
-                                        DataManager.instance().state = State.RESULTS;
-                                        renderResults();
-                                    }
-                                });
-                        }
+        /* DISPLAY QUIZ
+         *
+         * Goes through each quiz question and
+         * calls renderQuiz() recursively
+         *
+         */
+        if(counter<DataManager.instance().quiz1.questions.size())
+        {
+            /* FRAME SETTINGS */
+            frame.dispose();
+            final JFrame frame = new JFrame("Taking the Quiz!");
+            frame.setSize(500,500);
+            frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            
+            /* IMAGE */
+            JLabel label = new JLabel();
+            label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/quizimg.gif")));
+            frame.add(label);
+            
+            /* FRAME LAYOUT */
+            frame.setLayout(new GridLayout(10,1));
+            
+            /* QUESTION BUTTONS */
+            Question q = DataManager.instance().quiz1.questions.get(counter);
+            JLabel question = new JLabel(q.question);
+            JButton a = new JButton(q.a);
+            JButton b = new JButton(q.b);
+            JButton c = new JButton(q.c);
+            JButton d = new JButton(q.d);
+            frame.add(question);
+            frame.add(a);
+            frame.add(b);
+            frame.add(c);
+            frame.add(d);
+            a.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e) 
+                {
+                    frame.dispose();
+                    DataManager.instance().students.get(2).quizData.add(0);
+                    counter++;
+                    renderQuiz();
+                }
+            });
+
+            b.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e) 
+                {
+                    frame.dispose();
+                    DataManager.instance().students.get(2).quizData.add(1);
+                    counter++;
+                    renderQuiz();
+                }
+            });
+
+            c.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e) 
+                {
+                    frame.dispose();
+                    DataManager.instance().students.get(2).quizData.add(2);
+                    counter++;
+                    renderQuiz();
+                }
+            });
+
+            d.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e) 
+                {
+                    frame.dispose();
+                    DataManager.instance().students.get(2).quizData.add(3);
+                    counter++;
+                    renderQuiz();
+                }
+            });
+        }
+        else{   /* IF QUIZ DONE */
+            
+                /* FRAME SETTINGS */
+                frame.dispose();
+                final JFrame frame = new JFrame("Taking the Quiz!");
+                frame.setSize(500,500);
+                frame.setVisible(true);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setLayout(new GridLayout(10,1));
+                JButton submitButton = new JButton("Submit the Quiz!"); // and the quiz button???
+                //submitButton.setBounds(50, 30, 200, 25);
+                frame.add(submitButton);
+                submitButton.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e) {
+                        frame.dispose();
+                        DataManager.instance().state = State.RESULTS;
+                        renderResults();
+                    }
+                });
+        }
     }
-    //Need to have something to account for different number of questions
+    
     private void renderResults(){
-                                    frame.dispose();
-                                    final JFrame frame = new JFrame("Done the Quiz!");
-                                    frame.setSize(500,500);
-                                    frame.setVisible(true);
-                                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                                    frame.setLayout(new FlowLayout());
-                                    JLabel gameLabel = new JLabel("Score: " +DataManager.instance().students.get(2).getGrade(DataManager.instance().quiz1) +" Please close the window!"); // Text still not showing, look up text for buttons
-                                    JButton exitButton = new JButton("Exit to Main Menu");
-                        //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
-                                    frame.add(gameLabel);
-                        frame.add(exitButton);
-                        exitButton.addActionListener(
-                        new ActionListener(){
-                            public void actionPerformed(ActionEvent e) {
-                                frame.dispose();
-                                DataManager.instance().state = State.TITLE;
-                                    renderInGameTitle();
-                            }
-                        });
+        /* FRAME SETTINGS */
+        frame.dispose();
+        final JFrame frame = new JFrame("Done the Quiz!");
+        frame.setSize(500,500);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new FlowLayout());
+        
+        /* SCORE DISPLAY */
+        JLabel gameLabel = new JLabel("Score: " +DataManager.instance().students.get(2).getGrade(DataManager.instance().quiz1) +" Please close the window!"); // Text still not showing, look up text for buttons
+        
+        /* EXIT BUTTON */
+        JButton exitButton = new JButton("Exit to Main Menu");
+        frame.add(gameLabel);
+        frame.add(exitButton);
+        exitButton.addActionListener(
+        new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                DataManager.instance().state = State.TITLE;
+                    renderInGameTitle();
+            }
+        });
     }
     
     private void renderData(){
-                                    frame.dispose();
-                                    final JFrame frame = new JFrame("Class Scores");
-                                    frame.setSize(500,500);
-                                    frame.setVisible(true);
-                                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                                    frame.setLayout(new GridLayout(4,1));
-                                    ArrayList<JLabel> labels = new ArrayList<JLabel>();
-                                    for(Student s: DataManager.instance().students){
-                                        labels.add( new JLabel("Student: " + s.name + 
-                                                         "        Grade: " + s.getGrade(DataManager.instance().quiz1)) );
-                                    }
-                                   JLabel gameLabel3 = new JLabel("Average: "+DataManager.instance().getAverageGrade());
-                                   
-                                    JButton exitButton = new JButton("Exit to Main Menu");
-                                    //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
-                                    for( JLabel gameLabel : labels ){
-                                        frame.add(gameLabel);
-                                    }
-                                    frame.add(gameLabel3);
-                                    frame.add(exitButton);
-                                    exitButton.addActionListener(
-                                            new ActionListener(){
-                                                public void actionPerformed(ActionEvent e){
-                                                    frame.dispose();
-                                                    DataManager.instance().state = State.TITLE;
-                                                    renderInGameTitle();
-                                                }
-                                            }
-                                    ); 
+        /* FRAME SETTINGS */
+        frame.dispose();
+        final JFrame frame = new JFrame("Class Scores");
+        frame.setSize(500,500);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new GridLayout(4,1));
+        
+        /* DATA DISPLAY FOR ALL STUDENTS */
+        ArrayList<JLabel> labels = new ArrayList<JLabel>();
+        for(Student s: DataManager.instance().students){
+            labels.add( new JLabel("Student: " + s.name + 
+                             "        Grade: " + s.getGrade(DataManager.instance().quiz1)) );
+        }
+        JLabel gameLabel3 = new JLabel("Average: "+DataManager.instance().getAverageGrade());
+
+        /* EXIT BUTTON */
+        JButton exitButton = new JButton("Exit to Main Menu");
+        for( JLabel gameLabel : labels ){
+            frame.add(gameLabel);
+        }
+        frame.add(gameLabel3);
+        frame.add(exitButton);
+        exitButton.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        frame.dispose();
+                        DataManager.instance().state = State.TITLE;
+                        renderInGameTitle();
+                    }
+                }
+        ); 
                                    
     }
     
