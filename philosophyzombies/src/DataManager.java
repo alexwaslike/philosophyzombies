@@ -43,21 +43,18 @@ public class DataManager{
         Student alexandra = new Student("Alexandra Willis", "asdf", 1, "lol");
         alexandra.gameData.add(3);
         alexandra.gameData.add(1);
-        alexandra.quizData.add(3);
-        alexandra.quizData.add(1);
         
         Student oli = new Student("Oli Sykes", "asdfff", 2, "lol");
         oli.gameData.add(1);
         oli.gameData.add(2);
-        oli.quizData.add(3);
-        oli.quizData.add(2);
         
-        Student pete = new Student("Pete", "asdfsadf", 3, "lolo");
-        
+        Student max = new Student("Max Bemis", "asdfsadf", 3, "lolo");
+        max.gameData.add(1);
+        max.gameData.add(2);
         
         students.add(alexandra);
         students.add(oli);
-        students.add(pete);
+        students.add(max);
         
         // similarly hard-coding the prof
         professor = new Professor("Prof. Tillian Pearson", "merp@merp.com", 10, "lolza");
