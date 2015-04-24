@@ -48,6 +48,8 @@ public class Controller extends JFrame implements MouseListener{
         State st = DataManager.instance().state;
         if(st == State.TITLE)
             renderTitle();
+        else if(st == State.LOGINMENU)
+            renderLoginMenu();
         else if(st == State.STUDENTMENU)
             renderStudentMenu();
         else if(st == State.PROFESSORMENU)
@@ -72,7 +74,7 @@ public class Controller extends JFrame implements MouseListener{
         
         /* FRAME SETTINGS */
         frame = new JFrame("Game Skeleton"); // text for the title of the dialog
-        frame.setSize(500, 500); // the fuck is this
+        frame.setSize(800, 500); // the fuck is this
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // CLOSE PROGRAM WHEN YOU CLOSE THE DIALOG THIS IS IMPORTANT
         frame.setLayout(new FlowLayout());
         JLabel label = new JLabel();
@@ -96,8 +98,8 @@ public class Controller extends JFrame implements MouseListener{
         studentButton.addActionListener( // add dat listener
                 new ActionListener(){ // create dat listener
                     public void actionPerformed(ActionEvent e) { // default click function
-                        DataManager.instance().state = State.STUDENTMENU; // DECLARE THE STATE FIRST THING HERE
-                        renderStudentMenu(); // render the state from this^
+                        DataManager.instance().state = State.LOGINMENU; // DECLARE THE STATE FIRST THING HERE
+                        renderLoginMenu(); // render the state from this^
                     }
                 });
         professorButton.addActionListener(
@@ -114,7 +116,7 @@ public class Controller extends JFrame implements MouseListener{
         /* FRAME SETTINGS */
         frame.dispose();
         final JFrame frame = new JFrame("Main Menu");
-        frame.setSize(500,500);
+        frame.setSize(800,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // CLOSE PROGRAM WHEN YOU CLOSE THE DIALOG THIS IS IMPORTANT
         frame.setLayout(new FlowLayout());
@@ -162,12 +164,63 @@ public class Controller extends JFrame implements MouseListener{
                         });
     }
     
+    private void renderLoginMenu(){
+        /* FRAME SETTINGS */
+        // DO NOT RESTATE THE STATE IF IT WAS STATED PREVIOUSLY LIKE DAT^ or you'll have to click twice & that sucks
+        frame.dispose(); // if there is a previous button, start with dispose to remove last frame
+        final JFrame frame = new JFrame("Hello Student!");
+        frame.setSize(800,500);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        frame.setLayout(new GridLayout(10,1));
+            JButton a = new JButton(DataManager.instance().students.get(0).name);
+            JButton b = new JButton(DataManager.instance().students.get(1).name);
+            JButton c = new JButton(DataManager.instance().students.get(2).name);
+          
+            frame.add(a);
+            frame.add(b);
+            frame.add(c);
+           
+            a.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e) 
+                {
+                    frame.dispose();
+                    DataManager.instance().studentLoggedIn=DataManager.instance().students.get(0);
+                    renderStudentMenu();
+                }
+            });
+
+            b.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e) 
+                {
+                    frame.dispose();
+                    DataManager.instance().studentLoggedIn=DataManager.instance().students.get(1);
+                    renderStudentMenu();
+                }
+            });
+
+            c.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e) 
+                {
+                    frame.dispose();
+                    DataManager.instance().studentLoggedIn=DataManager.instance().students.get(2);
+                    renderStudentMenu();
+                }
+            });
+
+        }  
+    
+    
     private void renderStudentMenu(){
         /* FRAME SETTINGS */
         // DO NOT RESTATE THE STATE IF IT WAS STATED PREVIOUSLY LIKE DAT^ or you'll have to click twice & that sucks
         frame.dispose(); // if there is a previous button, start with dispose to remove last frame
         final JFrame frame = new JFrame("Hello Student!");
-        frame.setSize(500,500);
+        frame.setSize(800,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
@@ -212,8 +265,8 @@ public class Controller extends JFrame implements MouseListener{
     private void renderProfessorMenu(){
         /* FRAME SETTINGS */
         frame.dispose();
-        final JFrame frame = new JFrame("Hello Professor!");
-        frame.setSize(500,500);
+        final JFrame frame = new JFrame("Hello " + DataManager.instance().professor.name+"!");
+        frame.setSize(800,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
@@ -257,7 +310,7 @@ public class Controller extends JFrame implements MouseListener{
         /* FRAME SETTINGS */
         frame.dispose();
         final JFrame Situationframe = new JFrame("The Situation");
-        Situationframe.setSize(500, 500);
+        Situationframe.setSize(800, 500);
         Situationframe.setVisible(true);
         Situationframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Situationframe.setLayout(new GridLayout(10,1));
@@ -287,7 +340,7 @@ public class Controller extends JFrame implements MouseListener{
         /* FRAME SETTINGS */
         frame.dispose();
         final JFrame frame = new JFrame("Make your choice!!");
-        frame.setSize(500,500);
+        frame.setSize(800,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridLayout(10,1));
@@ -325,7 +378,7 @@ public class Controller extends JFrame implements MouseListener{
         /* FRAME SETTINGS */
         frame.dispose();
         final JFrame frame = new JFrame("You have made your decision!");
-        frame.setSize(500,500);
+        frame.setSize(800,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridLayout(10,1));
@@ -370,7 +423,7 @@ public class Controller extends JFrame implements MouseListener{
             /* FRAME SETTINGS */
             frame.dispose();
             final JFrame frame = new JFrame("Taking the Quiz!");
-            frame.setSize(500,500);
+            frame.setSize(800,500);
             frame.setVisible(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             
@@ -399,7 +452,7 @@ public class Controller extends JFrame implements MouseListener{
                 public void actionPerformed(ActionEvent e) 
                 {
                     frame.dispose();
-                    DataManager.instance().students.get(2).quizData.add(0);
+                    DataManager.instance().studentLoggedIn.quizData.add(0);
                     counter++;
                     renderQuiz();
                 }
@@ -410,7 +463,7 @@ public class Controller extends JFrame implements MouseListener{
                 public void actionPerformed(ActionEvent e) 
                 {
                     frame.dispose();
-                    DataManager.instance().students.get(2).quizData.add(1);
+                    DataManager.instance().studentLoggedIn.quizData.add(1);
                     counter++;
                     renderQuiz();
                 }
@@ -421,7 +474,7 @@ public class Controller extends JFrame implements MouseListener{
                 public void actionPerformed(ActionEvent e) 
                 {
                     frame.dispose();
-                    DataManager.instance().students.get(2).quizData.add(2);
+                    DataManager.instance().studentLoggedIn.quizData.add(2);
                     counter++;
                     renderQuiz();
                 }
@@ -432,7 +485,7 @@ public class Controller extends JFrame implements MouseListener{
                 public void actionPerformed(ActionEvent e) 
                 {
                     frame.dispose();
-                    DataManager.instance().students.get(2).quizData.add(3);
+                    DataManager.instance().studentLoggedIn.quizData.add(3);
                     counter++;
                     renderQuiz();
                 }
@@ -443,7 +496,7 @@ public class Controller extends JFrame implements MouseListener{
                 /* FRAME SETTINGS */
                 frame.dispose();
                 final JFrame frame = new JFrame("Taking the Quiz!");
-                frame.setSize(500,500);
+                frame.setSize(800,500);
                 frame.setVisible(true);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setLayout(new GridLayout(10,1));
@@ -465,15 +518,15 @@ public class Controller extends JFrame implements MouseListener{
         /* FRAME SETTINGS */
         frame.dispose();
         final JFrame frame = new JFrame("Finished Quiz!");
-        frame.setSize(500,500);
+        frame.setSize(800,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
         
         /* SCORE DISPLAY */
         JLabel gameLabel = new JLabel("Score: " 
-                +DataManager.instance().students.get(2).getGrade(DataManager.instance().quiz1) 
-                +" Please close the window!"); 
+                +DataManager.instance().studentLoggedIn.getGrade(DataManager.instance().quiz1) 
+                ); 
         // Text still not showing, look up text for buttons
         
         /* EXIT BUTTON */
@@ -494,7 +547,7 @@ public class Controller extends JFrame implements MouseListener{
         /* FRAME SETTINGS */
         frame.dispose();
         final JFrame frame = new JFrame("Class Scores");
-        frame.setSize(500,500);
+        frame.setSize(800,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridLayout(4,1));
