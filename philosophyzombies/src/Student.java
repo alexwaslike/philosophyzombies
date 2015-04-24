@@ -36,15 +36,16 @@ public class Student extends User{
         quizData = qdata;
     }
     
-    public int getGrade(Quiz quiz){
+    public double getGrade(Quiz quiz){
         
         if(quizData.isEmpty()){
             return 0;
         }
 
-        int numQuestions = quiz.correctAnswers.size();
-        int numCorrect = 0;
+        double numQuestions = (double)quiz.correctAnswers.size();
+        double numCorrect = 0;
         for( int i=0; i<quizData.size(); i++ ){
+            System.out.println("quiz answer: " + quiz.correctAnswers.get(i) + "student answer: " + quizData.get(i));
             if( quiz.correctAnswers.get(i) == quizData.get(i) )
                 numCorrect++;
         }

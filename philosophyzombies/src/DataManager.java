@@ -47,10 +47,16 @@ public class DataManager{
         Student oli = new Student("Oli Sykes", "asdfff", 2, "lol");
         oli.gameData.add(1);
         oli.gameData.add(2);
+        oli.quizData.add(0);
+        oli.quizData.add(2);
+        oli.quizData.add(0);
         
         Student max = new Student("Max Bemis", "asdfsadf", 3, "lolo");
         max.gameData.add(1);
         max.gameData.add(2);
+        max.quizData.add(0);
+        max.quizData.add(2);
+        max.quizData.add(1);
         
         students.add(alexandra);
         students.add(oli);
@@ -114,8 +120,6 @@ public class DataManager{
         
         return gradeSum/numStudents;
     }
-
-    public double getGradeBySection(int sectionNum){ return 0.0; }
 
     
 }
