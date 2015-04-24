@@ -105,10 +105,14 @@ public class Controller extends JFrame implements MouseListener{
     private void renderInGameTitle(){
         frame.dispose();
         final JFrame frame = new JFrame("Main Menu");
-        frame.setSize(width, height);
+        frame.setSize(500,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // CLOSE PROGRAM WHEN YOU CLOSE THE DIALOG THIS IS IMPORTANT
         frame.setLayout(new FlowLayout());
+        JLabel label = new JLabel();
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/startimg.gif")));
+        frame.add(label);
+        label.setSize(250,340);
         studentButton = new JButton("Student"); // button + name on button
         //studentButton.setBounds(10,0,50,30); // size of button (x,y,w,h) i believe check the docs
 	frame.add(studentButton); // do this to add ANYTHING to a box
@@ -121,6 +125,7 @@ public class Controller extends JFrame implements MouseListener{
         studentButton.addActionListener( // add dat listener
                 new ActionListener(){ // create dat listener
                     public void actionPerformed(ActionEvent e) { // default click function
+                        frame.dispose();
                         DataManager.instance().state = State.STUDENTMENU; // DECLARE THE STATE FIRST THING HERE
                         renderStudentMenu(); // render the state from this^
                     }
@@ -128,6 +133,7 @@ public class Controller extends JFrame implements MouseListener{
         professorButton.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e) {
+                        frame.dispose();
                         DataManager.instance().state = State.PROFESSORMENU;
                         renderProfessorMenu();
                     }
@@ -158,21 +164,20 @@ public class Controller extends JFrame implements MouseListener{
                         playButton.addActionListener(
                         new ActionListener(){
                             public void actionPerformed(ActionEvent e) {
+                                frame.dispose();
                                 DataManager.instance().state = State.SITUATION;
                                 renderSituation();
                             }
                         });
-<<<<<<< HEAD
                         JButton exitButton = new JButton("Exit"); // any time you have an exit button, USE THIS FORMULA DOWN HERE
                         exitButton.setBounds(200,100,50,60); // Why is the exit button so large???
-=======
-                        JButton exitButton = new JButton("Exit to Main Menu"); // any time you have an exit button, USE THIS FORMULA DOWN HERE
+                        JButton exittoMainMenuButton = new JButton("Exit to Main Menu"); // any time you have an exit button, USE THIS FORMULA DOWN HERE
                         //exitButton.setBounds(50, 60, 200, 25); // Why is the exit button so large???
->>>>>>> origin/master
-                        frame.add(exitButton);
-                        exitButton.addActionListener(
+                        frame.add(exittoMainMenuButton);
+                        exittoMainMenuButton.addActionListener(
                         new ActionListener(){
                             public void actionPerformed(ActionEvent e) {
+                                frame.dispose();
                                 DataManager.instance().state = State.TITLE;
                                 renderInGameTitle();
                             }
@@ -196,6 +201,7 @@ public class Controller extends JFrame implements MouseListener{
                         classButton.addActionListener(
                         new ActionListener(){
                             public void actionPerformed(ActionEvent e) {
+                                frame.dispose();
                                 DataManager.instance().state = State.CLASSDATA;
                                 renderData();
                             }
@@ -206,6 +212,7 @@ public class Controller extends JFrame implements MouseListener{
                         exitButton.addActionListener(
                         new ActionListener(){
                             public void actionPerformed(ActionEvent e) {
+                                frame.dispose();
                                 DataManager.instance().state = State.TITLE;
                                 renderInGameTitle();
                             }
@@ -214,37 +221,34 @@ public class Controller extends JFrame implements MouseListener{
   
     
     private void renderSituation(){
-        
                             frame.dispose();
-<<<<<<< HEAD
-                            final JFrame frame = new JFrame("Playing the Game!");
-                            frame.setSize(500,500);
-                            frame.setVisible(true);
-                            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                            frame.setLayout(new FlowLayout());
-                            JLabel label = new JLabel();
-                            label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameimg.gif")));
-                            frame.add(label);
-                            label.setBounds(250,340,250,250);
-                            JButton quizButton = new JButton("Take the quiz!"); // and the quiz button???
-                            quizButton.setBounds(50, 30, 200, 25);
-=======
-                            final JFrame frame = new JFrame("The Situation");
-                            frame.setSize(width, height);
-                            frame.setVisible(true);
-                            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                             frame.setLayout(new GridLayout(10,1));
+//                            final JFrame frame = new JFrame("Playing the Game!");
+//                            frame.setSize(500,500);
+//                            frame.setVisible(true);
+//                            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                            frame.setLayout(new FlowLayout());
+//                            JLabel label = new JLabel();
+//                            label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameimg.gif")));
+//                            frame.add(label);
+//                            label.setBounds(250,340,250,250);
+//                            JButton quizButton = new JButton("Take the quiz!"); // and the quiz button???
+//                            quizButton.setBounds(50, 30, 200, 25);
+                            final JFrame Situationframe = new JFrame("The Situation");
+                            Situationframe.setSize(500, 500);
+                            Situationframe.setVisible(true);
+                            Situationframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                             Situationframe.setLayout(new GridLayout(10,1));
                             JLabel situationLine1 = new JLabel("You are witnessing a runaway train barrelling down railway tracks towards five people who are tied up and unable to escape.");
                             JLabel situationLine2 = new JLabel("However, you could flip a switch on the track, sending the train towards one person instead of the five.");    
-                            frame.add(situationLine1);  
-                            frame.add(situationLine2);
+                            Situationframe.add(situationLine1);  
+                            Situationframe.add(situationLine2);
                             JButton optionsButton = new JButton("Make a decision!!"); // and the quiz button???
                             //quizButton.setBounds(50, 30, 200, 25);
-                            frame.add(optionsButton);
+                            Situationframe.add(optionsButton);
                             optionsButton.addActionListener(
                             new ActionListener(){
                                 public void actionPerformed(ActionEvent e) {
-                                    
+                                    Situationframe.dispose();
                                     DataManager.instance().state = State.OPTIONS;
                                     renderOptions();
                                 }
@@ -255,7 +259,7 @@ public class Controller extends JFrame implements MouseListener{
         
                             frame.dispose();
                             final JFrame frame = new JFrame("Make your choice!!");
-                            frame.setSize(width, height);
+                            frame.setSize(500,500);
                             frame.setVisible(true);
                             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                              frame.setLayout(new GridLayout(10,1));
@@ -269,6 +273,7 @@ public class Controller extends JFrame implements MouseListener{
                                 new ActionListener(){
                                     public void actionPerformed(ActionEvent e) 
                                     {
+                                        frame.dispose();
                                         DataManager.instance().state = State.DECISION;
                                         decision=0;
                                         renderDecision();
@@ -279,6 +284,7 @@ public class Controller extends JFrame implements MouseListener{
                                 new ActionListener(){
                                     public void actionPerformed(ActionEvent e) 
                                     {
+                                        frame.dispose();
                                         DataManager.instance().state = State.DECISION;
                                         decision=1;
                                         renderDecision();
@@ -293,7 +299,7 @@ public class Controller extends JFrame implements MouseListener{
         
                             frame.dispose();
                             final JFrame frame = new JFrame("You have made your decision!");
-                            frame.setSize(width, height);
+                            frame.setSize(500,500);
                             frame.setVisible(true);
                             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                              frame.setLayout(new GridLayout(10,1));
@@ -311,12 +317,11 @@ public class Controller extends JFrame implements MouseListener{
                              }
                             
                             JButton quizButton = new JButton("Take the quiz");    
->>>>>>> origin/master
                             frame.add(quizButton);
                             quizButton.addActionListener(
                             new ActionListener(){
                                 public void actionPerformed(ActionEvent e) {
-                                    
+                                    frame.dispose();
                                     DataManager.instance().state = State.QUIZ;
                                     renderQuiz();
                                 }
@@ -350,6 +355,7 @@ public class Controller extends JFrame implements MouseListener{
                                 new ActionListener(){
                                     public void actionPerformed(ActionEvent e) 
                                     {
+                                        frame.dispose();
                                         DataManager.instance().students.get(2).quizData.add(0);
                                         counter++;
                                         renderQuiz();
@@ -360,6 +366,7 @@ public class Controller extends JFrame implements MouseListener{
                                 new ActionListener(){
                                     public void actionPerformed(ActionEvent e) 
                                     {
+                                        frame.dispose();
                                         DataManager.instance().students.get(2).quizData.add(1);
                                         counter++;
                                         renderQuiz();
@@ -370,6 +377,7 @@ public class Controller extends JFrame implements MouseListener{
                                 new ActionListener(){
                                     public void actionPerformed(ActionEvent e) 
                                     {
+                                        frame.dispose();
                                         DataManager.instance().students.get(2).quizData.add(2);
                                         counter++;
                                         renderQuiz();
@@ -380,6 +388,7 @@ public class Controller extends JFrame implements MouseListener{
                                 new ActionListener(){
                                     public void actionPerformed(ActionEvent e) 
                                     {
+                                        frame.dispose();
                                         DataManager.instance().students.get(2).quizData.add(3);
                                         counter++;
                                         renderQuiz();
@@ -389,7 +398,7 @@ public class Controller extends JFrame implements MouseListener{
                         else{
                                 frame.dispose();
                                 final JFrame frame = new JFrame("Taking the Quiz!");
-                                frame.setSize(width, height);
+                                frame.setSize(500,500);
                                 frame.setVisible(true);
                                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                 frame.setLayout(new GridLayout(10,1));
@@ -399,6 +408,7 @@ public class Controller extends JFrame implements MouseListener{
                                 submitButton.addActionListener(
                                 new ActionListener(){
                                     public void actionPerformed(ActionEvent e) {
+                                        frame.dispose();
                                         DataManager.instance().state = State.RESULTS;
                                         renderResults();
                                     }
@@ -409,7 +419,7 @@ public class Controller extends JFrame implements MouseListener{
     private void renderResults(){
                                     frame.dispose();
                                     final JFrame frame = new JFrame("Done the Quiz!");
-                                    frame.setSize(width, height);
+                                    frame.setSize(500,500);
                                     frame.setVisible(true);
                                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                     frame.setLayout(new FlowLayout());
@@ -421,7 +431,7 @@ public class Controller extends JFrame implements MouseListener{
                         exitButton.addActionListener(
                         new ActionListener(){
                             public void actionPerformed(ActionEvent e) {
-                                
+                                frame.dispose();
                                 DataManager.instance().state = State.TITLE;
                                     renderInGameTitle();
                             }
@@ -431,7 +441,7 @@ public class Controller extends JFrame implements MouseListener{
     private void renderData(){
                                     frame.dispose();
                                     final JFrame frame = new JFrame("Class Scores");
-                                    frame.setSize(width, height);
+                                    frame.setSize(500,500);
                                     frame.setVisible(true);
                                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                     frame.setLayout(new GridLayout(4,1));
@@ -452,6 +462,7 @@ public class Controller extends JFrame implements MouseListener{
                                     exitButton.addActionListener(
                                             new ActionListener(){
                                                 public void actionPerformed(ActionEvent e){
+                                                    frame.dispose();
                                                     DataManager.instance().state = State.TITLE;
                                                     renderInGameTitle();
                                                 }
