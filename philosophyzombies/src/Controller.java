@@ -357,6 +357,7 @@ public class Controller extends JFrame implements MouseListener{
         });
     }
     
+    // NOTE: CURRENTLY UNABLE TO TAKE QUIZ MORE THAN ONE 
     private void renderQuiz(){
         /* DISPLAY QUIZ
          *
@@ -463,14 +464,17 @@ public class Controller extends JFrame implements MouseListener{
     private void renderResults(){
         /* FRAME SETTINGS */
         frame.dispose();
-        final JFrame frame = new JFrame("Done the Quiz!");
+        final JFrame frame = new JFrame("Finished Quiz!");
         frame.setSize(500,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
         
         /* SCORE DISPLAY */
-        JLabel gameLabel = new JLabel("Score: " +DataManager.instance().students.get(2).getGrade(DataManager.instance().quiz1) +" Please close the window!"); // Text still not showing, look up text for buttons
+        JLabel gameLabel = new JLabel("Score: " 
+                +DataManager.instance().students.get(2).getGrade(DataManager.instance().quiz1) 
+                +" Please close the window!"); 
+        // Text still not showing, look up text for buttons
         
         /* EXIT BUTTON */
         JButton exitButton = new JButton("Exit to Main Menu");
