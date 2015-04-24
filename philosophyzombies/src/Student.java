@@ -45,7 +45,6 @@ public class Student extends User{
         double numQuestions = (double)quiz.correctAnswers.size();
         double numCorrect = 0;
         for( int i=0; i<quizData.size(); i++ ){
-            System.out.println("quiz answer: " + quiz.correctAnswers.get(i) + "student answer: " + quizData.get(i));
             if( quiz.correctAnswers.get(i) == quizData.get(i) )
                 numCorrect++;
         }

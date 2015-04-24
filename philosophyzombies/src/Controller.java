@@ -225,12 +225,6 @@ public class Controller extends JFrame implements MouseListener{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
         
-        /* IMAGE */
-        JLabel label = new JLabel();
-        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/studentimg.gif")));
-        frame.add(label);
-        label.setBounds(250,340,10,10);
-        
         /* PLAY GAME BUTTON */
         JButton playButton = new JButton("Play Game");
         playButton.setBounds(10,0,50,30);
@@ -271,12 +265,7 @@ public class Controller extends JFrame implements MouseListener{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
         
-        /* IMAGE */
-        JLabel label = new JLabel();
-        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/professorgif.gif")));
-        frame.add(label);
-        label.setBounds(250,340,10,10);
-        
+               
         /* CHECK CLASS DATA BUTTON */
         JButton classButton = new JButton("Check Class Data");
         classButton.setBounds(50, 30, 200, 25);
@@ -313,8 +302,13 @@ public class Controller extends JFrame implements MouseListener{
         Situationframe.setSize(800, 500);
         Situationframe.setVisible(true);
         Situationframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Situationframe.setLayout(new GridLayout(10,1));
-         
+        Situationframe.setLayout(new FlowLayout());
+         /* IMAGE */
+        JLabel label = new JLabel();
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/studentimg.gif")));
+        Situationframe.add(label);
+        label.setBounds(700,340,10,10);
+        
         /* TEXT */
         JLabel situationLine1 = new JLabel("You are witnessing a runaway train barrelling down railway tracks towards five people who are tied up and unable to escape.");
         JLabel situationLine2 = new JLabel("However, you could flip a switch on the track, sending the train towards one person instead of the five.");    
@@ -343,7 +337,13 @@ public class Controller extends JFrame implements MouseListener{
         frame.setSize(800,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new GridLayout(10,1));
+        frame.setLayout(new FlowLayout());
+        
+        /* IMAGE */
+        JLabel label = new JLabel();
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/studentimg.gif")));
+        frame.add(label);
+        label.setBounds(250,340,10,10);
         
         /* QUESTION AND ANSWERS */
         JLabel question = new JLabel("Do you flip the switch, killing only one person; or let the train go, and kill five?");
@@ -426,12 +426,7 @@ public class Controller extends JFrame implements MouseListener{
             frame.setSize(800,500);
             frame.setVisible(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            
-            /* IMAGE */
-            JLabel label = new JLabel();
-            label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/quizimg.gif")));
-            frame.add(label);
-            
+           
             /* FRAME LAYOUT */
             frame.setLayout(new GridLayout(10,1));
             
