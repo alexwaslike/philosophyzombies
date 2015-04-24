@@ -18,11 +18,6 @@
 
 import java.util.ArrayList;
 
-import static java.nio.file.StandardOpenOption.*;
-import java.nio.file.*;
-import java.io.*;
-import java.util.Scanner;
-
 public class DataManager{
     
     // *SINGLETON* - only instance of DataManager private
@@ -31,6 +26,8 @@ public class DataManager{
     public ArrayList<Student> students;
     public Professor professor;
     public State state;
+    
+    public Student studentLoggedIn;
     
     public Quiz quiz1;
     
@@ -43,13 +40,13 @@ public class DataManager{
         // simulation; we don't actually have a database to pull from
         // and searching for all of the save files 
         // is outside the scope of this project
-        Student alexandra = new Student("Alexandra", "asdf", 1, "lol");
+        Student alexandra = new Student("Alexandra Willis", "asdf", 1, "lol");
         alexandra.gameData.add(3);
         alexandra.gameData.add(1);
         alexandra.quizData.add(3);
         alexandra.quizData.add(1);
         
-        Student oli = new Student("Oli", "asdfff", 2, "lol");
+        Student oli = new Student("Oli Sykes", "asdfff", 2, "lol");
         oli.gameData.add(1);
         oli.gameData.add(2);
         oli.quizData.add(3);
@@ -63,16 +60,22 @@ public class DataManager{
         students.add(pete);
         
         // similarly hard-coding the prof
-        professor = new Professor("Bob", "merp@merp.com", 10, "lolza");
+        professor = new Professor("Prof. Tillian Pearson", "merp@merp.com", 10, "lolza");
         
         // creating a quiz for simulation purposes
-        Question q1 = new Question("What year is Alexandra's birthday?",
-                                    "1991", "1992", "1993", "1994", 3);
-        Question q2 = new Question("What is Alexandra's favorite color?",
-                                    "blue", "red", "green", "white", 1);
+        Question q1 = new Question("What was the utilitarian choice in this scenario: switching the track to hit the one person, or allowing it to hit the five?",
+                                    "Switching", "Not switching", "_", "_", 0);
+        Question q2 = new Question("From what you learned from this scenario, what is utility?",
+                                    "Doing the right thing based on the action itself", 
+                                    "Ambivalence towards suffering", 
+                                    "Reducing the most amount of suffering", 
+                                    "Belief that humans can not change fate", 2);
+        Question q3 = new Question("True or False: Utilitarianism aims to chose moral actions based on their utility.",
+                                    "True", "False", "_", "_", 0);
         ArrayList<Question> qs = new ArrayList<Question>();
         qs.add(q1);
         qs.add(q2);
+        qs.add(q3);
         quiz1 = new Quiz(qs);
         
         // setting inital state; always display title screen first
@@ -89,6 +92,7 @@ public class DataManager{
             instance = new DataManager();
         return instance;
     }
+    
     
     
     /*
