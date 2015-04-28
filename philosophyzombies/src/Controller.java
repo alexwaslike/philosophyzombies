@@ -78,7 +78,7 @@ public class Controller extends JFrame implements MouseListener{
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // CLOSE PROGRAM WHEN YOU CLOSE THE DIALOG THIS IS IMPORTANT
         frame.setLayout(new FlowLayout());
         JLabel label = new JLabel();
-        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/startimg.gif")));
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/titleimage.png")));
         frame.add(label);
         label.setSize(250,340);
         frame.getContentPane().add(label);
