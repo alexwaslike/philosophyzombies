@@ -123,7 +123,7 @@ public class Controller extends JFrame implements MouseListener{
         
         /* TITLE IMAGE */
         JLabel label = new JLabel();
-        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/startimg.gif")));
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/titleimage.png")));
         frame.add(label);
         label.setSize(250,340);
         

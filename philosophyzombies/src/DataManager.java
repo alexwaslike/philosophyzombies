@@ -44,7 +44,7 @@ public class DataManager{
         alexandra.gameData.add(3);
         alexandra.gameData.add(1);
         
-        Student oli = new Student("Oli Sykes", "asdfff", 2, "lol");
+        Student oli = new Student("Oliver Sykes", "asdfff", 2, "lol");
         oli.gameData.add(1);
         oli.gameData.add(2);
         oli.quizData.add(0);
