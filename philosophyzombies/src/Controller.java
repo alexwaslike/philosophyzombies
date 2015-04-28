@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-public class Controller extends JFrame implements MouseListener{
+public class Controller extends JFrame{
     
     private JFrame frame;
     JButton studentButton;
@@ -576,14 +576,6 @@ public class Controller extends JFrame implements MouseListener{
     }
     
     public void mousePressed(MouseEvent e){}
-    
-    
-    // We don't need these for this program, but need to define them
-    // in order to implement MouseListener
-    public void mouseReleased(MouseEvent e){}
-    public void mouseClicked(MouseEvent e){}
-    public void mouseExited(MouseEvent e){}
-    public void mouseEntered(MouseEvent e){}
 
     
 }
