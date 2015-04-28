@@ -1,0 +1,22 @@
+THIS BUILD FOR DEMO PURPOSES ONLY
+IT IS HIGHLY ADVISED TO FOLLOW THESE EXACT INSTRUCTIONS
+OTHERWISE ERRORS MAY OCCUR
+
+1. Run through Student User Flow.
+- Open the game.
+- Select "student".
+- Select "Alexandra Willis".
+- Select "Play game".
+- Run through game scenario as desired.
+- Select "Take the quiz".
+- Run through quiz as desired.
+- Select "Submit the quiz".
+- Select "exit to main menu".
+
+2. Run through Professor User Flow.
+- Selec "Professor".
+- Select "Check class data" to view data on already stored students and the data from your quiz.
+- Select "Exit to main menu".
+
+TO RUN THROUGH THE BRANCHING GAME OPTION OR TO TAKE THE QUIZ AGAIN,
+EXIT THE PROGRAM AND RE-RUN IT.
