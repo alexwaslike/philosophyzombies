@@ -306,7 +306,7 @@ public class Controller extends JFrame implements MouseListener{
         Situationframe.setLayout(new FlowLayout());
          /* IMAGE */
         JLabel label = new JLabel();
-        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/studentimg.gif")));
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/trolley.jpg")));
         Situationframe.add(label);
         label.setBounds(700,340,10,10);
         
@@ -342,7 +342,7 @@ public class Controller extends JFrame implements MouseListener{
         
         /* IMAGE */
         JLabel label = new JLabel();
-        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/studentimg.gif")));
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/trolley.jpg")));
         frame.add(label);
         label.setBounds(250,340,10,10);
         
